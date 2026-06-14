@@ -409,3 +409,51 @@ footer button{
   background:#006eff;
   box-shadow:0 0 18px rgba(0,170,255,.75);
 }
+.v55-actions{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:12px;
+    margin-top:20px;
+}
+
+.watch-btn{
+    height:65px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#1e88ff,#0057d9);
+    color:white;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    box-shadow:0 0 20px rgba(30,136,255,.45);
+}
+
+.watch-btn i{
+    font-size:20px;
+}
+
+.action-btn-small{
+    height:65px;
+    border:none;
+    border-radius:18px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(15px);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.action-btn-small i{
+    font-size:18px;
+}
+
+.watch-btn:active,
+.action-btn-small:active{
+    transform:scale(.95);
+}
