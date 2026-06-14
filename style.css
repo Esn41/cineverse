@@ -358,3 +358,12 @@ footer button{
   .modal-box{grid-template-columns:1fr}
   .modal-box img{height:300px}
 }
+.cat{
+  font-size:17px;
+  text-align:center;
+}
+
+.categories{
+  margin-top:10px;
+  margin-bottom:15px;
+}
