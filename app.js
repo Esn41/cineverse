@@ -59,7 +59,15 @@ function movieCard(movie){
 function renderHome(){
   document.getElementById("popularRow").innerHTML = movies.slice().sort((a,b)=>b.rating-a.rating).map(movieCard).join("");
   document.getElementById("newRow").innerHTML = movies.filter(m=>m.isNew).map(movieCard).join("");
+const continueList = JSON.parse(localStorage.getItem("continueList")) || [];
+const continueMovies = continueList
+  .map(id => movies.find(m => m.id === id))
+  .filter(Boolean);
 
+document.getElementById("continueRow").innerHTML =
+  continueMovies.length
+    ? continueMovies.map(movieCard).join("")
+    : "<p class='empty-text'>Henüz izlenen film yok.</p>";
   document.getElementById("categoryBar").innerHTML = categories.map(c => `
     <button class="cat" onclick="filterMovie('${c[0]}')">
       <i class="fa-solid ${c[1]}"></i>${c[0]}
@@ -187,7 +195,11 @@ function openDetails(id){
 
 function watchMovie(id){
   const movie = movies.find(m=>m.id===id);
-
+let continueList = JSON.parse(localStorage.getItem("continueList")) || [];
+continueList = continueList.filter(x => x !== id);
+continueList.unshift(id);
+continueList = continueList.slice(0,4);
+localStorage.setItem("continueList", JSON.stringify(continueList));
   hideAll();
   document.getElementById("playerPage").classList.remove("hidden");
   document.getElementById("playerTitle").innerText = movie.title;
