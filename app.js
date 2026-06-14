@@ -11,7 +11,7 @@ const movies = [
     actors:"David Stakston, Jonas Strand Gravli",
     img:"https://picsum.photos/500/800?random=501",
     desc:"Mitolojik atmosferli, heyecanlı bir yapım.",
-    video:"https://archive.org/embed/Nosferatu1922"
+    video:"https://www.w3schools.com/html/mov_bbb.mp4"
   },
   {
     id:2,
@@ -25,7 +25,7 @@ const movies = [
     actors:"Gal Gadot, Chris Pine",
     img:"https://picsum.photos/500/800?random=502",
     desc:"Süper kahraman aksiyon filmi.",
-    video:"https://archive.org/embed/TheGeneral"
+    video:"https://www.w3schools.com/html/movie.mp4"
   },
   {
     id:3,
@@ -39,7 +39,7 @@ const movies = [
     actors:"Oyuncu 1, Oyuncu 2",
     img:"https://picsum.photos/500/800?random=503",
     desc:"Macera ve dramı birleştiren güçlü bir hikaye.",
-    video:"https://archive.org/embed/Metropolis1927Restoration"
+    video:"https://www.w3schools.com/html/mov_bbb.mp4"
   },
   {
     id:4,
@@ -53,63 +53,7 @@ const movies = [
     actors:"Oyuncu 1, Oyuncu 2",
     img:"https://picsum.photos/500/800?random=504",
     desc:"Suç dünyasında geçen tempolu bir hikaye.",
-    video:"https://archive.org/embed/ThePhantomOfTheOpera1925"
-  },
-  {
-    id:5,
-    title:"Stranger Things",
-    year:2022,
-    category:"Bilim Kurgu",
-    rating:8.7,
-    isNew:true,
-    duration:"50 dk",
-    language:"Türkçe",
-    actors:"Millie Bobby Brown, Finn Wolfhard",
-    img:"https://picsum.photos/500/800?random=505",
-    desc:"Gizem, macera ve bilim kurgunun birleşimi.",
-    video:"https://archive.org/embed/TheKid"
-  },
-  {
-    id:6,
-    title:"The Last Airbender",
-    year:2024,
-    category:"Fantastik",
-    rating:7.9,
-    isNew:true,
-    duration:"55 dk",
-    language:"Türkçe",
-    actors:"Gordon Cormier, Kiawentiio",
-    img:"https://picsum.photos/500/800?random=506",
-    desc:"Elementlerin gücünü konu alan fantastik macera.",
-    video:"https://archive.org/embed/night_of_the_living_dead"
-  },
-  {
-    id:7,
-    title:"La Casa De Papel",
-    year:2021,
-    category:"Aksiyon",
-    rating:8.5,
-    isNew:false,
-    duration:"48 dk",
-    language:"Türkçe",
-    actors:"Úrsula Corberó, Álvaro Morte",
-    img:"https://picsum.photos/500/800?random=507",
-    desc:"Büyük soygun planlarının anlatıldığı aksiyon dizisi.",
-    video:"https://archive.org/embed/Nosferatu1922"
-  },
-  {
-    id:8,
-    title:"The Batman",
-    year:2022,
-    category:"Aksiyon",
-    rating:8.2,
-    isNew:false,
-    duration:"176 dk",
-    language:"Türkçe",
-    actors:"Robert Pattinson, Zoë Kravitz",
-    img:"https://picsum.photos/500/800?random=508",
-    desc:"Karanlık ve etkileyici bir Batman hikayesi.",
-    video:"https://archive.org/embed/TheGeneral"
+    video:"https://www.w3schools.com/html/movie.mp4"
   }
 ];
 
@@ -143,22 +87,18 @@ function movieCard(movie){
       <div class="card-actions">
         <button onclick="watchMovie(${movie.id})">
           <i class="fa-solid fa-play"></i>
-          <span>İzle</span>
         </button>
 
         <button onclick="openDetails(${movie.id})">
           <i class="fa-solid fa-circle-info"></i>
-          <span>Bilgi</span>
         </button>
 
         <button onclick="toggleFavorite(${movie.id})">
           <i class="${isFav ? "fa-solid" : "fa-regular"} fa-heart"></i>
-          <span>Favori</span>
         </button>
 
         <button onclick="toggleList(${movie.id})">
           <i class="${isList ? "fa-solid fa-check" : "fa-solid fa-ellipsis-vertical"}"></i>
-          <span>Liste</span>
         </button>
       </div>
     </div>
@@ -170,10 +110,8 @@ function renderHome(){
 
   document.getElementById("heroImg").src = heroMovie.img;
   document.getElementById("heroTitle").innerText = heroMovie.title;
-  document.getElementById("heroDesc").innerText = `${heroMovie.category} • ${heroMovie.language} • ${heroMovie.year}`;
-
-  document.getElementById("gameRow").innerHTML =
-    movies.slice(0,4).map(movieCard).join("");
+  document.getElementById("heroDesc").innerText =
+    `${heroMovie.category} • ${heroMovie.language} • ${heroMovie.year}`;
 
   const continueList = JSON.parse(localStorage.getItem("continueList")) || [];
   const continueMovies = continueList
@@ -197,7 +135,10 @@ function hideAll(){
   document.getElementById("resultPage").classList.add("hidden");
   document.getElementById("playerPage").classList.add("hidden");
   document.querySelectorAll(".text-page").forEach(p=>p.classList.add("hidden"));
-  document.getElementById("player").src = "";
+
+  const player = document.getElementById("player");
+  player.pause();
+  player.src = "";
 }
 
 function goHome(){
@@ -349,9 +290,21 @@ function watchMovie(id){
   localStorage.setItem("continueList", JSON.stringify(continueList));
 
   hideAll();
+
   document.getElementById("playerPage").classList.remove("hidden");
   document.getElementById("playerTitle").innerText = movie.title;
-  document.getElementById("player").src = movie.video;
+
+  const player = document.getElementById("player");
+  const btn = document.getElementById("playPauseBtn");
+
+  player.src = movie.video;
+  player.load();
+
+  player.play().then(()=>{
+    btn.innerText = "Ⅱ";
+  }).catch(()=>{
+    btn.innerText = "▶";
+  });
 
   closeDetails();
   window.scrollTo(0,0);
@@ -365,46 +318,74 @@ function addHeroToList(){
   toggleList(heroMovie.id);
 }
 
-function watchSelected(){
-  if(selectedMovie) watchMovie(selectedMovie.id);
+function playPause(){
+  const player = document.getElementById("player");
+  const btn = document.getElementById("playPauseBtn");
+
+  if(player.paused){
+    player.play();
+    btn.innerText = "Ⅱ";
+  }else{
+    player.pause();
+    btn.innerText = "▶";
+  }
 }
 
-function favoriteSelected(){
-  if(selectedMovie) toggleFavorite(selectedMovie.id);
+function back10(){
+  const player = document.getElementById("player");
+  player.currentTime = Math.max(0, player.currentTime - 10);
 }
 
-function listSelected(){
-  if(selectedMovie) toggleList(selectedMovie.id);
+function forward10(){
+  const player = document.getElementById("player");
+
+  if(player.duration){
+    player.currentTime = Math.min(player.duration, player.currentTime + 10);
+  }
 }
+
+function fullscreenPlayer(){
+  const box = document.getElementById("playerBox");
+
+  if(box.requestFullscreen){
+    box.requestFullscreen();
+  }else if(box.webkitRequestFullscreen){
+    box.webkitRequestFullscreen();
+  }
+}
+
+function seekVideo(e){
+  const player = document.getElementById("player");
+  const line = e.currentTarget;
+  const rect = line.getBoundingClientRect();
+  const percent = (e.clientX - rect.left) / rect.width;
+
+  if(player.duration){
+    player.currentTime = percent * player.duration;
+  }
+}
+
+document.getElementById("player").addEventListener("timeupdate", function(){
+  const player = this;
+  const fill = document.getElementById("progressFill");
+  const timeLeft = document.getElementById("timeLeft");
+
+  if(player.duration){
+    const percent = (player.currentTime / player.duration) * 100;
+    fill.style.width = percent + "%";
+
+    const remaining = Math.max(0, player.duration - player.currentTime);
+    const min = Math.floor(remaining / 60);
+    const sec = Math.floor(remaining % 60);
+
+    timeLeft.innerText = `${min}:${sec < 10 ? "0" + sec : sec}`;
+  }
+});
 
 function showText(id){
   hideAll();
   document.getElementById(id).classList.remove("hidden");
   window.scrollTo(0,0);
-}
-
-function focusSearch(){
-  document.getElementById("searchInput").focus();
-}
-
-function fullscreenPlayer(){
-  const playerBox = document.querySelector(".netflix-player");
-
-  if(playerBox.requestFullscreen){
-    playerBox.requestFullscreen();
-  }
-}
-
-function back10(){
-  alert("10 saniye geri alma özelliği MP4 video yükleyince aktif olacak.");
-}
-
-function forward10(){
-  alert("10 saniye ileri alma özelliği MP4 video yükleyince aktif olacak.");
-}
-
-function playPause(){
-  alert("Oynat/Duraklat kontrolü MP4 video yükleyince aktif olacak.");
 }
 
 document.getElementById("searchInput").addEventListener("input", function(){
