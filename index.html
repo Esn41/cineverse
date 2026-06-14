@@ -1,4 +1,4 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
@@ -9,139 +9,125 @@ i<!DOCTYPE html>
 </head>
 <body>
 
-<div class="site">
+<div class="app">
 
-  <aside class="sidebar">
-    <div class="side-logo">
-      <div class="cv-logo">CV</div>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">CV</div>
       <div>
         <h1>CINE<span>VERSE</span></h1>
         <p>SONSUZ FİLM EVRENİ</p>
       </div>
     </div>
 
-    <button class="side active" onclick="goHome()"><i class="fa-solid fa-house"></i> Ana Sayfa</button>
-    <button class="side" onclick="showAllMovies()"><i class="fa-solid fa-clapperboard"></i> Filmler</button>
-    <button class="side" onclick="filterMovie('Dizi')"><i class="fa-solid fa-tv"></i> Diziler</button>
-    <button class="side" onclick="showCategories()"><i class="fa-solid fa-border-all"></i> Kategoriler</button>
-    <button class="side" onclick="showMostWatched()"><i class="fa-solid fa-arrow-trend-up"></i> En Çok İzlenenler</button>
-    <button class="side" onclick="showNewMovies()"><i class="fa-solid fa-square-plus"></i> Yeni Eklenenler</button>
-    <button class="side" onclick="filterMovie('Klasik')"><i class="fa-regular fa-star"></i> Klasikler</button>
-    <button class="side" onclick="showList()"><i class="fa-regular fa-bookmark"></i> Listem</button>
-    <button class="side" onclick="showFavorites()"><i class="fa-regular fa-heart"></i> Favorilerim</button>
-  </aside>
+    <div class="search">
+      <input id="searchInput" placeholder="Film ara..." />
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+  </header>
 
-  <main class="main">
+  <nav class="nav">
+    <button onclick="goHome()" class="active"><i class="fa-solid fa-house"></i> Ana Sayfa</button>
+    <button onclick="showAllMovies()"><i class="fa-solid fa-clapperboard"></i> Filmler</button>
+    <button onclick="showCategories()"><i class="fa-solid fa-table-cells"></i> Kategoriler</button>
+    <button onclick="showList()"><i class="fa-regular fa-bookmark"></i> Listem</button>
+    <button onclick="showFavorites()"><i class="fa-regular fa-heart"></i> Favorilerim</button>
+  </nav>
 
-    <header class="topbar">
-      <div class="mobile-brand">
-        <div class="cv-mini">CV</div>
-        <strong>CINE<span>VERSE</span></strong>
-      </div>
-
-      <nav>
-        <button onclick="goHome()" class="nav-active"><i class="fa-solid fa-house"></i> Ana Sayfa</button>
-        <button onclick="showAllMovies()"><i class="fa-solid fa-clapperboard"></i> Filmler</button>
-        <button onclick="showCategories()"><i class="fa-solid fa-border-all"></i> Kategoriler</button>
-        <button onclick="showList()"><i class="fa-regular fa-bookmark"></i> Listem</button>
-        <button onclick="showFavorites()"><i class="fa-regular fa-heart"></i> Favorilerim</button>
-      </nav>
-
-      <div class="top-actions">
-        <div class="search">
-          <input id="searchInput" placeholder="Film ara..." />
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-        <i class="fa-regular fa-bell"></i>
-        <div class="avatar"></div>
-      </div>
-    </header>
+  <section id="home">
 
     <section class="hero">
-      <button class="arrow left"><i class="fa-solid fa-chevron-left"></i></button>
-
-      <div class="hero-text">
+      <div class="hero-content">
         <span>KORKU • 1922</span>
         <h2>NOSFERATU</h2>
         <p>Kont Dracula'dan ilham alan bu sessiz korku klasiği, sinema tarihinin en etkileyici yapımlarındandır.</p>
 
         <div class="hero-buttons">
-          <button onclick="watchMovie(1)" class="watch"><i class="fa-solid fa-play"></i> İZLE</button>
-          <button onclick="openDetails(1)" class="details"><i class="fa-solid fa-circle-info"></i> DETAYLAR</button>
-          <button onclick="addToList(1)" class="plus"><i class="fa-solid fa-plus"></i></button>
+          <button class="watch" onclick="watchMovie(1)">
+            <i class="fa-solid fa-play"></i> İZLE
+          </button>
+          <button class="details" onclick="openDetails(1)">
+            <i class="fa-solid fa-circle-info"></i> DETAYLAR
+          </button>
+          <button class="circle" onclick="addToList(1)">
+            <i class="fa-solid fa-plus"></i>
+          </button>
         </div>
       </div>
-
-      <button class="arrow right"><i class="fa-solid fa-chevron-right"></i></button>
     </section>
 
     <section class="categories" id="categoryBar"></section>
 
-    <section class="row-head">
+    <div class="section-title">
       <h3>🔥 En Çok İzlenenler</h3>
       <button onclick="showMostWatched()">Tümünü Gör ></button>
-    </section>
+    </div>
+
     <section class="movie-row" id="popularRow"></section>
 
-    <section class="row-head">
+    <div class="section-title">
       <h3>✨ Yeni Eklenenler</h3>
       <button onclick="showNewMovies()">Tümünü Gör ></button>
-    </section>
+    </div>
+
     <section class="movie-row" id="newRow"></section>
 
-    <section class="result-area" id="resultArea">
-      <h3 id="resultTitle"></h3>
-      <div class="movie-grid" id="resultGrid"></div>
-    </section>
+  </section>
 
-    <section class="text-page" id="about">
-      <h2>Hakkımızda</h2>
-      <p>CineVerse, klasikleşmiş ve yasal olarak paylaşılabilen film içeriklerini kullanıcılarla buluşturmayı amaçlayan modern bir film platformudur.</p>
-    </section>
+  <section id="resultPage" class="hidden">
+    <h2 id="resultTitle"></h2>
+    <div class="movie-grid" id="resultGrid"></div>
+  </section>
 
-    <section class="text-page" id="privacy">
-      <h2>Gizlilik Politikası</h2>
-      <p>CineVerse, kullanıcı gizliliğine önem verir. Favoriler ve liste bilgileri cihazınızın tarayıcı hafızasında saklanır.</p>
-    </section>
+  <section id="playerPage" class="hidden">
+    <button class="back" onclick="goHome()">← Geri Dön</button>
+    <h2 id="playerTitle"></h2>
+    <iframe id="player" src="" allowfullscreen></iframe>
+  </section>
 
-    <section class="text-page" id="contact">
-      <h2>İletişim</h2>
-      <p>Öneri, destek veya telif bildirimi için: destek@cineverse.com</p>
-    </section>
+  <section id="aboutPage" class="text-page hidden">
+    <h2>Hakkımızda</h2>
+    <p>CineVerse, klasikleşmiş ve yasal olarak paylaşılabilen film içeriklerini kullanıcılarla buluşturmayı amaçlayan modern bir film platformudur.</p>
+    <p>Amacımız, sinema kültürünü kaliteli ve güvenli bir arayüzle kullanıcıya sunmaktır.</p>
+  </section>
 
-    <section class="text-page" id="terms">
-      <h2>Kullanım Koşulları</h2>
-      <p>CineVerse kullanıcısı siteyi yasalara uygun kullanmayı kabul eder. İçeriklerin izinsiz kopyalanması yasaktır.</p>
-    </section>
+  <section id="privacyPage" class="text-page hidden">
+    <h2>Gizlilik Politikası</h2>
+    <p>CineVerse kullanıcı gizliliğine önem verir. Favoriler ve liste bilgileri cihazınızın tarayıcı hafızasında saklanır.</p>
+  </section>
 
-    <section class="player-page" id="playerPage">
-      <button onclick="goHome()" class="back">← Geri Dön</button>
-      <h2 id="playerTitle"></h2>
-      <iframe id="player" src="" allowfullscreen></iframe>
-    </section>
+  <section id="contactPage" class="text-page hidden">
+    <h2>İletişim</h2>
+    <p>Destek, öneri ve telif bildirimi için bizimle iletişime geçebilirsiniz.</p>
+    <p><strong>E-posta:</strong> destek@cineverse.com</p>
+  </section>
 
-    <footer>
-      <span>© 2026 CineVerse — Tüm Hakları Saklıdır.</span>
-      <button onclick="showText('about')">Hakkımızda</button>
-      <button onclick="showText('privacy')">Gizlilik Politikası</button>
-      <button onclick="showText('contact')">İletişim</button>
-      <button onclick="showText('terms')">Kullanım Koşulları</button>
-    </footer>
+  <section id="termsPage" class="text-page hidden">
+    <h2>Kullanım Koşulları</h2>
+    <p>CineVerse kullanıcısı siteyi yasalara uygun şekilde kullanmayı kabul eder. İçeriklerin izinsiz kopyalanması yasaktır.</p>
+  </section>
 
-  </main>
+  <footer>
+    <span>© 2026 CineVerse — Tüm Hakları Saklıdır.</span>
+    <button onclick="showText('aboutPage')">Hakkımızda</button>
+    <button onclick="showText('privacyPage')">Gizlilik Politikası</button>
+    <button onclick="showText('contactPage')">İletişim</button>
+    <button onclick="showText('termsPage')">Kullanım Koşulları</button>
+  </footer>
+
 </div>
 
-<div class="modal" id="modal">
+<div id="modal" class="modal">
   <div class="modal-box">
-    <button onclick="closeDetails()" class="modal-close">×</button>
+    <button class="close" onclick="closeDetails()">×</button>
     <img id="modalImg" />
     <div>
       <h2 id="modalTitle"></h2>
       <p id="modalInfo"></p>
       <p id="modalDesc"></p>
-      <button onclick="watchSelected()" class="watch">İZLE</button>
-      <button onclick="favoriteSelected()" class="details">FAVORİ</button>
-      <button onclick="listSelected()" class="details">LİSTEM</button>
+      <button class="watch" onclick="watchSelected()">İZLE</button>
+      <button class="details" onclick="favoriteSelected()">FAVORİ</button>
+      <button class="details" onclick="listSelected()">LİSTEM</button>
     </div>
   </div>
 </div>
