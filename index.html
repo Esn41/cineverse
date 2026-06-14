@@ -161,5 +161,18 @@
 </div>
 
 <script src="app.js"></script>
+<div id="movieModal" onclick="closeDetails()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeDetails()">×</button>
+
+    <img id="modalImg" src="" alt="Film">
+
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <div id="modalMeta"></div>
+      <div id="modalDesc"></div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
