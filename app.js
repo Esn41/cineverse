@@ -244,3 +244,6 @@ document.getElementById("searchInput").addEventListener("input", function(){
 });
 
 renderHome();
+function closeDetails(){
+  document.getElementById("movieModal").classList.remove("show");
+}
