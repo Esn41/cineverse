@@ -181,9 +181,6 @@ function openDetails(id){
   document.getElementById("movieModal").classList.add("show");
 }
 
-function closeDetails(){
-  document.getElementById("modal").style.display = "none";
-}
 
 function watchMovie(id){
   const movie = movies.find(m=>m.id===id);
