@@ -50,20 +50,29 @@
             sinema tarihinin en etkileyici yapımlarından biridir.
           </p>
 
-          <div class="hero-actions">
-            <button onclick="watchMovie(1)" class="primary">
-              <i class="fa-solid fa-play"></i> İZLE
-            </button>
+          <div class="hero-actions v55-actions">
 
-            <button onclick="openDetails(1)" class="secondary">
-              <i class="fa-solid fa-circle-info"></i> DETAYLAR
-            </button>
+  <button onclick="watchMovie(1)" class="watch-btn">
+    <i class="fa-solid fa-play"></i>
+    <span>Şimdi İzle</span>
+  </button>
 
-            <button onclick="addToList(1)" class="round">
-              <i class="fa-solid fa-plus"></i>
-            </button>
-          </div>
-        </div>
+  <button onclick="openDetails(1)" class="action-btn-small">
+    <i class="fa-solid fa-circle-info"></i>
+    <span>Bilgi</span>
+  </button>
+
+  <button onclick="toggleFavorite(1)" class="action-btn-small">
+    <i class="fa-regular fa-heart"></i>
+    <span>Favori</span>
+  </button>
+
+  <button onclick="addToList(1)" class="action-btn-small">
+    <i class="fa-solid fa-list"></i>
+    <span>Liste</span>
+  </button>
+
+</div>
       </section>
 
       <section class="categories" id="categoryBar"></section>
