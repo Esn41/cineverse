@@ -38,6 +38,7 @@ function movieCard(movie){
       </div>
     </div>
   `;
+  
 }
 
 function renderHome(){
@@ -77,6 +78,15 @@ function showResults(title,items){
 function showAllMovies(){ showResults("Tüm Filmler", movies); }
 function showMostWatched(){ showResults("En Çok İzlenenler", movies.slice().sort((a,b)=>b.rating-a.rating)); }
 function showNewMovies(){ showResults("Yeni Eklenenler", movies.filter(m=>m.isNew)); }
+function showCategories(){
+  hideAll();
+  document.getElementById("homePage").classList.remove("hidden");
+  document.querySelector(".hero").style.display = "none";
+  document.querySelector(".section-title").style.display = "none";
+  document.querySelectorAll(".movie-row").forEach(row => row.style.display = "none");
+  document.getElementById("categoryBar").style.display = "flex";
+  window.scrollTo(0,0);
+}
 function filterMovie(cat){ showResults(cat, movies.filter(m=>m.category===cat)); }
 
 function toggleFavorite(id){
