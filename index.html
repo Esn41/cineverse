@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineVerse V7</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">CV</div>
+      <h1>CineVerse</h1>
+    </div>
+
+    <div class="top-actions">
+      <button onclick="focusSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button onclick="toggleTheme()"><i class="fa-solid fa-sun"></i></button>
+    </div>
+  </header>
+
+  <div class="search-box">
+    <input id="searchInput" placeholder="Film ara..." />
+  </div>
+
+  <main>
+
+    <section id="homePage">
+
+      <section class="hero-slider" id="heroSlider"></section>
+
+      <div class="tabs">
+        <button class="active" onclick="showTab('new')">Yeni Eklenenler</button>
+        <button onclick="showTab('recommended')">Tavsiye Filmler</button>
+        <button onclick="showTab('imdb')">IMDb 7+</button>
+      </div>
+
+      <section class="movie-grid" id="homeGrid"></section>
+
+    </section>
+
+    <section id="resultPage" class="hidden">
+      <h2 id="resultTitle"></h2>
+      <section class="movie-grid" id="resultGrid"></section>
+    </section>
+
+    <section id="playerPage" class="hidden">
+      <button class="back-btn" onclick="goHome()">← Geri Dön</button>
+      <h2 id="playerTitle"></h2>
+
+      <div class="player-box" id="playerBox">
+        <video id="player" playsinline></video>
+
+        <div class="player-ui">
+          <div class="player-center">
+            <button onclick="back10()">↺<span>10</span></button>
+            <button onclick="playPause()" id="playPauseBtn" class="play-big">▶</button>
+            <button onclick="forward10()">↻<span>10</span></button>
+          </div>
+
+          <div class="progress-area">
+            <div class="progress-bar" onclick="seekVideo(event)">
+              <div id="progressFill"></div>
+            </div>
+            <span id="timeLeft">00:00</span>
+          </div>
+
+          <div class="player-bottom">
+            <button onclick="fullscreenPlayer()">⛶ Tam Ekran</button>
+            <button onclick="back10()">10 Geri</button>
+            <button onclick="forward10()">10 İleri</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menuPage" class="hidden menu-page">
+      <h2>Menü</h2>
+      <button onclick="showFavorites()">Favorilerim</button>
+      <button onclick="showList()">Listem</button>
+      <button onclick="showContinueMovies()">Son İzlenenler</button>
+      <button onclick="showCategories()">Kategoriler</button>
+    </section>
+
+  </main>
+
+  <footer class="bottom-nav">
+    <button onclick="goHome()" class="active">
+      <i class="fa-solid fa-house"></i>
+      <span>Anasayfa</span>
+    </button>
+
+    <button onclick="showAllMovies()">
+      <i class="fa-solid fa-film"></i>
+      <span>Filmler</span>
+    </button>
+
+    <button onclick="showSeries()">
+      <i class="fa-solid fa-tv"></i>
+      <span>Diziler</span>
+    </button>
+
+    <button onclick="showMenu()">
+      <i class="fa-solid fa-bars"></i>
+      <span>Menu</span>
+    </button>
+  </footer>
+
+</div>
+
+<div id="movieModal" class="movie-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeDetails()">×</button>
+    <img id="modalImg" src="" alt="Film">
+
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <div id="modalMeta"></div>
+      <div id="modalDesc"></div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
