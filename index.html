@@ -39,41 +39,14 @@
   <main>
 
     <section id="homePage">
-      <section class="hero">
-        <div class="hero-overlay"></div>
+      <section class="hero-slider" id="heroSlider"></section>
 
-        <div class="hero-content">
-          <div class="hero-tag">KORKU • KLASİK • 1922</div>
-          <h2>NOSFERATU</h2>
-          <p>
-            Kont Dracula'dan ilham alan bu sessiz korku klasiği,
-            sinema tarihinin en etkileyici yapımlarından biridir.
-          </p>
-
-          <div class="hero-actions v55-actions">
-
-  <button onclick="watchMovie(1)" class="watch-btn">
-    <i class="fa-solid fa-play"></i>
-    <span>Şimdi İzle</span>
-  </button>
-
-  <button onclick="openDetails(1)" class="action-btn-small">
-    <i class="fa-solid fa-circle-info"></i>
-    <span>Bilgi</span>
-  </button>
-
-  <button onclick="toggleFavorite(1)" class="action-btn-small">
-    <i class="fa-regular fa-heart"></i>
-    <span>Favori</span>
-  </button>
-
-  <button onclick="addToList(1)" class="action-btn-small">
-    <i class="fa-solid fa-list"></i>
-    <span>Liste</span>
-  </button>
-
-</div>
-      </section>
+<section class="continue-section">
+  <div class="section-title">
+    <h3>⏯️ Son İzlenenler</h3>
+  </div>
+  <div class="movie-row" id="continueRow"></div>
+</section>
 
       <section class="categories" id="categoryBar"></section>
 
