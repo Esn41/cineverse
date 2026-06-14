@@ -541,3 +541,37 @@ footer button{
 .movie-card p{
   padding:0 12px;
 }
+.movie-card{
+  height:auto !important;
+  min-height:525px !important;
+  overflow:hidden !important;
+  padding-bottom:18px !important;
+}
+
+.movie-card img{
+  height:260px !important;
+  object-fit:cover !important;
+}
+
+.card-actions,
+.v55-card-actions{
+  position:relative !important;
+  bottom:auto !important;
+  margin-top:18px !important;
+  padding:0 14px 16px !important;
+}
+
+@media(max-width:480px){
+  .movie-card{
+    min-height:525px !important;
+  }
+
+  .movie-card img{
+    height:245px !important;
+  }
+
+  .v55-watch,
+  .v55-small{
+    height:48px !important;
+  }
+}
