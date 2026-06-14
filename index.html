@@ -98,7 +98,16 @@
     <section id="playerPage" class="hidden">
       <button class="back" onclick="goHome()">← Geri Dön</button>
       <h2 id="playerTitle"></h2>
-      <iframe id="player" allowfullscreen></iframe>
+      <div class="netflix-player">
+  <iframe id="player" allowfullscreen></iframe>
+
+  <div class="player-controls">
+    <button onclick="back10()">⏪ 10</button>
+    <button onclick="playPause()">▶ / ⏸</button>
+    <button onclick="forward10()">10 ⏩</button>
+    <button onclick="fullscreenPlayer()">⛶</button>
+  </div>
+</div>
     </section>
 
     <section id="aboutPage" class="text-page hidden">
