@@ -143,27 +143,42 @@ function showList(){
 }
 
 function openDetails(id){
-  selectedMovie = movies.find(m=>m.id===id);
+  selectedMovie = movies.find(m => m.id === id);
 
   document.getElementById("modalImg").src = selectedMovie.img;
   document.getElementById("modalTitle").innerText = selectedMovie.title;
 
   document.getElementById("modalMeta").innerHTML = `
-    <span>⭐ ${selectedMovie.rating}</span> •
-    <span>${selectedMovie.year}</span> •
-    <span>${selectedMovie.category}</span> •
-    <span>${selectedMovie.duration}</span> •
-    <span>${selectedMovie.language}</span>
+    <span>⭐ ${selectedMovie.rating}</span>
+    <span>${selectedMovie.year}</span>
+    <span>${selectedMovie.category}</span>
+    <span>${selectedMovie.duration || "120 dk"}</span>
+    <span>${selectedMovie.language || "TR"}</span>
   `;
 
   document.getElementById("modalDesc").innerHTML = `
-    <strong>Film Açıklaması</strong><br>
-    ${selectedMovie.desc}
-    <br><br>
-    <strong>Oyuncular:</strong> ${selectedMovie.actors}
+    <strong>Film Açıklaması</strong>
+    <p>${selectedMovie.desc || "Bu film için açıklama yakında eklenecek."}</p>
+
+    <div class="v56-modal-actions">
+      <button onclick="watchMovie(${selectedMovie.id})">
+        <i class="fa-solid fa-play"></i>
+        Fragmanı İzle
+      </button>
+
+      <button onclick="toggleFavorite(${selectedMovie.id})">
+        <i class="fa-regular fa-heart"></i>
+        Favori
+      </button>
+
+      <button onclick="toggleList(${selectedMovie.id})">
+        <i class="fa-solid fa-list"></i>
+        Listem
+      </button>
+    </div>
   `;
 
-  document.getElementById("modal").style.display = "flex";
+  document.getElementById("movieModal").classList.add("show");
 }
 
 function closeDetails(){
