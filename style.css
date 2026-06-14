@@ -834,3 +834,12 @@ footer button{
   font-size:18px;
   padding:20px;
 }
+.continue-section .movie-card{
+  max-width:420px;
+}
+
+.continue-section .movie-row{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+}
