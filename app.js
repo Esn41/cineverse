@@ -1,16 +1,10 @@
 const movies = [
-  {id:1,title:"Nosferatu",year:1922,category:"Korku",rating:8.5,isNew:false,img:"https://picsum.photos/400/600?random=101",desc:"Kont Dracula'dan ilham alan sessiz korku klasiği.",video:"https://archive.org/embed/Nosferatu1922"},
-  {id:2,title:"The General",year:1926,category:"Klasik",rating:8.3,isNew:false,img:"https://picsum.photos/400/600?random=102",desc:"Buster Keaton'ın unutulmaz sessiz komedi klasiği.",video:"https://archive.org/embed/TheGeneral"},
-  {id:3,title:"Metropolis",year:1927,category:"Bilim Kurgu",rating:8.6,isNew:false,img:"https://picsum.photos/400/600?random=103",desc:"Bilim kurgu sinemasının öncü yapımlarından biri.",video:"https://archive.org/embed/Metropolis1927Restoration"},
-  {id:4,title:"The Phantom of the Opera",year:1925,category:"Korku",rating:8.4,isNew:false,img:"https://picsum.photos/400/600?random=104",desc:"Gotik atmosferiyle ünlü klasik korku filmi.",video:"https://archive.org/embed/ThePhantomOfTheOpera1925"},
-  {id:5,title:"The Kid",year:1921,category:"Komedi",rating:8.4,isNew:false,img:"https://picsum.photos/400/600?random=105",desc:"Charlie Chaplin'in sevilen komedi klasiği.",video:"https://archive.org/embed/TheKid"},
-  {id:6,title:"Dr. Jekyll and Mr. Hyde",year:1920,category:"Korku",rating:8.2,isNew:false,img:"https://picsum.photos/400/600?random=106",desc:"Karanlık insan doğasını anlatan klasik yapım.",video:"https://archive.org/embed/DrJekyllAndMrHyde1920"},
-  {id:7,title:"The Cabinet of Dr. Caligari",year:1920,category:"Korku",rating:8.1,isNew:true,img:"https://picsum.photos/400/600?random=107",desc:"Alman dışavurumcu sinemasının önemli örneklerinden.",video:"https://archive.org/embed/TheCabinetOfDrCaligari1920"},
-  {id:8,title:"Plan 9 from Outer Space",year:1959,category:"Bilim Kurgu",rating:6.6,isNew:true,img:"https://picsum.photos/400/600?random=108",desc:"Kült bilim kurgu filmlerinden biri.",video:"https://archive.org/embed/Plan_9_from_Outer_Space_1959"},
-  {id:9,title:"Carnival of Souls",year:1962,category:"Korku",rating:7.6,isNew:true,img:"https://picsum.photos/400/600?random=109",desc:"Gizemli atmosferiyle kültleşmiş korku filmi.",video:"https://archive.org/embed/CarnivalofSouls"},
-  {id:10,title:"Battleship Potemkin",year:1925,category:"Dram",rating:8.5,isNew:true,img:"https://picsum.photos/400/600?random=110",desc:"Sinema tarihinin etkili sessiz dram filmlerinden.",video:"https://archive.org/embed/BattleshipPotemkin"},
-  {id:11,title:"The Thief of Bagdad",year:1924,category:"Aksiyon",rating:7.8,isNew:true,img:"https://picsum.photos/400/600?random=111",desc:"Fantastik macera sinemasının erken dönem örneği.",video:"https://archive.org/embed/TheThiefOfBagdad1924"},
-  {id:12,title:"Night of the Living Dead",year:1968,category:"Korku",rating:8.7,isNew:true,img:"https://picsum.photos/400/600?random=112",desc:"Modern zombi filmlerinin temelini atan kült korku klasiği.",video:"https://archive.org/embed/night_of_the_living_dead"}
+  {id:1,title:"Nosferatu",year:1922,category:"Korku",rating:8.5,isNew:false,duration:"94 dk",language:"Sessiz Film",actors:"Max Schreck, Gustav von Wangenheim",img:"https://picsum.photos/400/600?random=101",desc:"Kont Dracula'dan ilham alan sessiz korku klasiği.",video:"https://archive.org/embed/Nosferatu1922"},
+  {id:2,title:"The General",year:1926,category:"Klasik",rating:8.3,isNew:false,duration:"78 dk",language:"Sessiz Film",actors:"Buster Keaton, Marion Mack",img:"https://picsum.photos/400/600?random=102",desc:"Buster Keaton'ın unutulmaz sessiz komedi klasiği.",video:"https://archive.org/embed/TheGeneral"},
+  {id:3,title:"Metropolis",year:1927,category:"Bilim Kurgu",rating:8.6,isNew:false,duration:"153 dk",language:"Sessiz Film",actors:"Brigitte Helm, Gustav Fröhlich",img:"https://picsum.photos/400/600?random=103",desc:"Bilim kurgu sinemasının öncü yapımlarından biri.",video:"https://archive.org/embed/Metropolis1927Restoration"},
+  {id:4,title:"The Phantom of the Opera",year:1925,category:"Korku",rating:8.4,isNew:false,duration:"93 dk",language:"Sessiz Film",actors:"Lon Chaney, Mary Philbin",img:"https://picsum.photos/400/600?random=104",desc:"Gotik atmosferiyle ünlü klasik korku filmi.",video:"https://archive.org/embed/ThePhantomOfTheOpera1925"},
+  {id:5,title:"The Kid",year:1921,category:"Komedi",rating:8.4,isNew:false,duration:"68 dk",language:"Sessiz Film",actors:"Charlie Chaplin, Jackie Coogan",img:"https://picsum.photos/400/600?random=105",desc:"Charlie Chaplin'in sevilen komedi klasiği.",video:"https://archive.org/embed/TheKid"},
+  {id:6,title:"Night of the Living Dead",year:1968,category:"Korku",rating:8.7,isNew:true,duration:"96 dk",language:"İngilizce",actors:"Duane Jones, Judith O'Dea",img:"https://picsum.photos/400/600?random=106",desc:"Modern zombi filmlerinin temelini atan kült korku klasiği.",video:"https://archive.org/embed/night_of_the_living_dead"}
 ];
 
 const categories = [
@@ -27,6 +21,9 @@ let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 let list = JSON.parse(localStorage.getItem("list")) || [];
 
 function movieCard(movie){
+  const isFav = favorites.includes(movie.id);
+  const isList = list.includes(movie.id);
+
   return `
     <div class="movie-card">
       ${movie.isNew ? `<div class="badge">YENİ</div>` : ""}
@@ -36,14 +33,15 @@ function movieCard(movie){
       <div class="card-actions">
         <button onclick="watchMovie(${movie.id})">▶</button>
         <button onclick="openDetails(${movie.id})">ℹ</button>
-        <button onclick="addFavorite(${movie.id})">♡</button>
+        <button onclick="toggleFavorite(${movie.id})">${isFav ? "♥" : "♡"}</button>
+        <button onclick="toggleList(${movie.id})">${isList ? "✓" : "+"}</button>
       </div>
     </div>
   `;
 }
 
 function renderHome(){
-  document.getElementById("popularRow").innerHTML = movies.slice(0,6).map(movieCard).join("");
+  document.getElementById("popularRow").innerHTML = movies.slice().sort((a,b)=>b.rating-a.rating).map(movieCard).join("");
   document.getElementById("newRow").innerHTML = movies.filter(m=>m.isNew).map(movieCard).join("");
 
   document.getElementById("categoryBar").innerHTML = categories.map(c => `
@@ -64,6 +62,7 @@ function hideAll(){
 function goHome(){
   hideAll();
   document.getElementById("homePage").classList.remove("hidden");
+  renderHome();
   window.scrollTo(0,0);
 }
 
@@ -80,24 +79,30 @@ function showMostWatched(){ showResults("En Çok İzlenenler", movies.slice().so
 function showNewMovies(){ showResults("Yeni Eklenenler", movies.filter(m=>m.isNew)); }
 function filterMovie(cat){ showResults(cat, movies.filter(m=>m.category===cat)); }
 
-function addFavorite(id){
-  if(!favorites.includes(id)){
-    favorites.push(id);
-    localStorage.setItem("favorites",JSON.stringify(favorites));
-    alert("Favorilere eklendi.");
+function toggleFavorite(id){
+  if(favorites.includes(id)){
+    favorites = favorites.filter(x => x !== id);
+    alert("Favorilerden kaldırıldı.");
   }else{
-    alert("Bu film zaten favorilerde.");
+    favorites.push(id);
+    alert("Favorilere eklendi.");
   }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  refreshCurrent();
 }
 
-function addToList(id){
-  if(!list.includes(id)){
-    list.push(id);
-    localStorage.setItem("list",JSON.stringify(list));
-    alert("Listene eklendi.");
+function toggleList(id){
+  if(list.includes(id)){
+    list = list.filter(x => x !== id);
+    alert("Listenden kaldırıldı.");
   }else{
-    alert("Bu film zaten listende.");
+    list.push(id);
+    alert("Listene eklendi.");
   }
+
+  localStorage.setItem("list", JSON.stringify(list));
+  refreshCurrent();
 }
 
 function showFavorites(){
@@ -110,10 +115,18 @@ function showList(){
 
 function openDetails(id){
   selectedMovie = movies.find(m=>m.id===id);
+
   document.getElementById("modalImg").src = selectedMovie.img;
   document.getElementById("modalTitle").innerText = selectedMovie.title;
-  document.getElementById("modalMeta").innerText = `${selectedMovie.year} • ${selectedMovie.category} • ⭐ ${selectedMovie.rating}`;
-  document.getElementById("modalDesc").innerText = selectedMovie.desc;
+  document.getElementById("modalMeta").innerText =
+    `${selectedMovie.year} • ${selectedMovie.category} • ${selectedMovie.duration} • ${selectedMovie.language} • ⭐ ${selectedMovie.rating}`;
+
+  document.getElementById("modalDesc").innerHTML = `
+    ${selectedMovie.desc}
+    <br><br>
+    <strong>Oyuncular:</strong> ${selectedMovie.actors}
+  `;
+
   document.getElementById("modal").style.display = "flex";
 }
 
@@ -123,10 +136,12 @@ function closeDetails(){
 
 function watchMovie(id){
   const movie = movies.find(m=>m.id===id);
+
   hideAll();
   document.getElementById("playerPage").classList.remove("hidden");
   document.getElementById("playerTitle").innerText = movie.title;
   document.getElementById("player").src = movie.video;
+
   closeDetails();
   window.scrollTo(0,0);
 }
@@ -136,17 +151,28 @@ function watchSelected(){
 }
 
 function favoriteSelected(){
-  if(selectedMovie) addFavorite(selectedMovie.id);
+  if(selectedMovie) toggleFavorite(selectedMovie.id);
 }
 
 function listSelected(){
-  if(selectedMovie) addToList(selectedMovie.id);
+  if(selectedMovie) toggleList(selectedMovie.id);
 }
 
 function showText(id){
   hideAll();
   document.getElementById(id).classList.remove("hidden");
   window.scrollTo(0,0);
+}
+
+function refreshCurrent(){
+  const title = document.getElementById("resultTitle").innerText;
+
+  if(title === "Favorilerim") showFavorites();
+  else if(title === "Listem") showList();
+  else if(title === "Tüm Filmler") showAllMovies();
+  else if(title === "En Çok İzlenenler") showMostWatched();
+  else if(title === "Yeni Eklenenler") showNewMovies();
+  else renderHome();
 }
 
 document.getElementById("searchInput").addEventListener("input", function(){
