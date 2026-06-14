@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CineVerse</title>
+  <title>CineVerse V4</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
@@ -11,7 +11,7 @@
 
 <div class="app">
 
-  <header class="topbar">
+  <header class="header">
     <div class="brand">
       <div class="logo">CV</div>
       <div>
@@ -29,83 +29,98 @@
   <nav class="nav">
     <button onclick="goHome()" class="active"><i class="fa-solid fa-house"></i> Ana Sayfa</button>
     <button onclick="showAllMovies()"><i class="fa-solid fa-clapperboard"></i> Filmler</button>
-    <button onclick="showCategories()"><i class="fa-solid fa-table-cells"></i> Kategoriler</button>
+    <button onclick="showMostWatched()"><i class="fa-solid fa-fire"></i> Popüler</button>
+    <button onclick="showNewMovies()"><i class="fa-solid fa-plus"></i> Yeni</button>
     <button onclick="showList()"><i class="fa-regular fa-bookmark"></i> Listem</button>
     <button onclick="showFavorites()"><i class="fa-regular fa-heart"></i> Favorilerim</button>
   </nav>
 
-  <section id="home">
+  <main>
 
-    <section class="hero">
-      <div class="hero-content">
-        <span>KORKU • 1922</span>
-        <h2>NOSFERATU</h2>
-        <p>Kont Dracula'dan ilham alan bu sessiz korku klasiği, sinema tarihinin en etkileyici yapımlarındandır.</p>
+    <section id="homePage">
+      <section class="hero">
+        <div class="hero-overlay"></div>
 
-        <div class="hero-buttons">
-          <button class="watch" onclick="watchMovie(1)">
-            <i class="fa-solid fa-play"></i> İZLE
-          </button>
-          <button class="details" onclick="openDetails(1)">
-            <i class="fa-solid fa-circle-info"></i> DETAYLAR
-          </button>
-          <button class="circle" onclick="addToList(1)">
-            <i class="fa-solid fa-plus"></i>
-          </button>
+        <div class="hero-content">
+          <div class="hero-tag">KORKU • KLASİK • 1922</div>
+          <h2>NOSFERATU</h2>
+          <p>
+            Kont Dracula'dan ilham alan bu sessiz korku klasiği,
+            sinema tarihinin en etkileyici yapımlarından biridir.
+          </p>
+
+          <div class="hero-actions">
+            <button onclick="watchMovie(1)" class="primary">
+              <i class="fa-solid fa-play"></i> İZLE
+            </button>
+
+            <button onclick="openDetails(1)" class="secondary">
+              <i class="fa-solid fa-circle-info"></i> DETAYLAR
+            </button>
+
+            <button onclick="addToList(1)" class="round">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
         </div>
+      </section>
+
+      <section class="categories" id="categoryBar"></section>
+
+      <div class="section-title">
+        <h3>🔥 En Çok İzlenenler</h3>
+        <button onclick="showMostWatched()">Tümünü Gör</button>
       </div>
+      <section class="movie-row" id="popularRow"></section>
+
+      <div class="section-title">
+        <h3>✨ Yeni Eklenenler</h3>
+        <button onclick="showNewMovies()">Tümünü Gör</button>
+      </div>
+      <section class="movie-row" id="newRow"></section>
     </section>
 
-    <section class="categories" id="categoryBar"></section>
+    <section id="resultPage" class="hidden">
+      <h2 id="resultTitle"></h2>
+      <div id="resultGrid" class="movie-grid"></div>
+    </section>
 
-    <div class="section-title">
-      <h3>🔥 En Çok İzlenenler</h3>
-      <button onclick="showMostWatched()">Tümünü Gör ></button>
-    </div>
+    <section id="playerPage" class="hidden">
+      <button class="back" onclick="goHome()">← Geri Dön</button>
+      <h2 id="playerTitle"></h2>
+      <iframe id="player" allowfullscreen></iframe>
+    </section>
 
-    <section class="movie-row" id="popularRow"></section>
+    <section id="aboutPage" class="text-page hidden">
+      <h2>Hakkımızda</h2>
+      <p>
+        CineVerse, klasikleşmiş ve yasal olarak paylaşılabilen film içeriklerini
+        modern bir arayüzle kullanıcılarla buluşturmayı amaçlayan film platformudur.
+      </p>
+    </section>
 
-    <div class="section-title">
-      <h3>✨ Yeni Eklenenler</h3>
-      <button onclick="showNewMovies()">Tümünü Gör ></button>
-    </div>
+    <section id="privacyPage" class="text-page hidden">
+      <h2>Gizlilik Politikası</h2>
+      <p>
+        CineVerse kullanıcı gizliliğine önem verir. Favoriler ve liste bilgileri
+        yalnızca cihazınızın tarayıcı hafızasında saklanır.
+      </p>
+    </section>
 
-    <section class="movie-row" id="newRow"></section>
+    <section id="contactPage" class="text-page hidden">
+      <h2>İletişim</h2>
+      <p>Destek ve telif bildirimleri için: destek@cineverse.com</p>
+    </section>
 
-  </section>
+    <section id="termsPage" class="text-page hidden">
+      <h2>Kullanım Koşulları</h2>
+      <p>
+        CineVerse kullanıcısı siteyi yasalara uygun kullanmayı kabul eder.
+        İçeriklerin izinsiz kopyalanması yasaktır.
+      </p>
+    </section>
 
-  <section id="resultPage" class="hidden">
-    <h2 id="resultTitle"></h2>
-    <div class="movie-grid" id="resultGrid"></div>
-  </section>
-
-  <section id="playerPage" class="hidden">
-    <button class="back" onclick="goHome()">← Geri Dön</button>
-    <h2 id="playerTitle"></h2>
-    <iframe id="player" src="" allowfullscreen></iframe>
-  </section>
-
-  <section id="aboutPage" class="text-page hidden">
-    <h2>Hakkımızda</h2>
-    <p>CineVerse, klasikleşmiş ve yasal olarak paylaşılabilen film içeriklerini kullanıcılarla buluşturmayı amaçlayan modern bir film platformudur.</p>
-    <p>Amacımız, sinema kültürünü kaliteli ve güvenli bir arayüzle kullanıcıya sunmaktır.</p>
-  </section>
-
-  <section id="privacyPage" class="text-page hidden">
-    <h2>Gizlilik Politikası</h2>
-    <p>CineVerse kullanıcı gizliliğine önem verir. Favoriler ve liste bilgileri cihazınızın tarayıcı hafızasında saklanır.</p>
-  </section>
-
-  <section id="contactPage" class="text-page hidden">
-    <h2>İletişim</h2>
-    <p>Destek, öneri ve telif bildirimi için bizimle iletişime geçebilirsiniz.</p>
-    <p><strong>E-posta:</strong> destek@cineverse.com</p>
-  </section>
-
-  <section id="termsPage" class="text-page hidden">
-    <h2>Kullanım Koşulları</h2>
-    <p>CineVerse kullanıcısı siteyi yasalara uygun şekilde kullanmayı kabul eder. İçeriklerin izinsiz kopyalanması yasaktır.</p>
-  </section>
+  </main>
 
   <footer>
     <span>© 2026 CineVerse — Tüm Hakları Saklıdır.</span>
@@ -121,13 +136,16 @@
   <div class="modal-box">
     <button class="close" onclick="closeDetails()">×</button>
     <img id="modalImg" />
-    <div>
+    <div class="modal-info">
       <h2 id="modalTitle"></h2>
-      <p id="modalInfo"></p>
+      <p id="modalMeta"></p>
       <p id="modalDesc"></p>
-      <button class="watch" onclick="watchSelected()">İZLE</button>
-      <button class="details" onclick="favoriteSelected()">FAVORİ</button>
-      <button class="details" onclick="listSelected()">LİSTEM</button>
+
+      <div class="modal-actions">
+        <button class="primary" onclick="watchSelected()">İZLE</button>
+        <button class="secondary" onclick="favoriteSelected()">FAVORİ</button>
+        <button class="secondary" onclick="listSelected()">LİSTEM</button>
+      </div>
     </div>
   </div>
 </div>
