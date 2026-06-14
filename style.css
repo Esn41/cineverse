@@ -666,3 +666,44 @@ footer button{
   background:linear-gradient(135deg,#1597ff,#0057d9);
   box-shadow:0 0 25px rgba(0,140,255,.4);
 }
+.modal-close{
+  position:absolute;
+  top:14px;
+  right:16px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,.12);
+  color:white;
+  font-size:26px;
+  backdrop-filter:blur(12px);
+  z-index:20;
+}
+
+.modal-content{
+  position:relative;
+}
+
+.modal-actors{
+  margin-top:16px;
+  padding:14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.modal-actors strong{
+  color:white;
+}
+
+.modal-actors p{
+  margin-top:6px;
+  color:#cfe6ff;
+}
+
+#modalMeta span:first-child{
+  background:linear-gradient(135deg,#ffca3a,#ff8c00);
+  color:#06101f;
+  font-weight:900;
+}
