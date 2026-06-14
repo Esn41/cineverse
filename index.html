@@ -142,27 +142,25 @@
 
 </div>
 
-<div id="modal" class="modal">
-  <div class="modal-box">
-    <button class="close" onclick="closeDetails()">×</button>
-    <img id="modalImg" />
-    <div class="modal-info">
-      <h2 id="modalTitle"></h2>
-      <p id="modalMeta"></p>
-      <p id="modalDesc"></p>
 
-      <div class="modal-actions">
-        <button class="primary" onclick="watchSelected()">İZLE</button>
-        <button class="secondary" onclick="favoriteSelected()">FAVORİ</button>
-        <button class="secondary" onclick="listSelected()">LİSTEM</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script src="app.js"></script>
 <div id="movieModal" onclick="closeDetails()">
   <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeDetails()">×</button>
+
+    <img id="modalImg" src="" alt="Film">
+
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <div id="modalMeta"></div>
+      <div id="modalDesc"></div>
+    </div>
+  </div>
+</div>
+<div id="movieModal" class="movie-modal">
+  <div class="modal-content">
     <button class="modal-close" onclick="closeDetails()">×</button>
 
     <img id="modalImg" src="" alt="Film">
