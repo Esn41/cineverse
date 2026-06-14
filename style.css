@@ -496,3 +496,48 @@ footer button{
 .v55-small:active{
   transform:scale(.94);
 }
+.movie-card{
+  overflow:hidden;
+  padding-bottom:14px;
+}
+
+.card-actions,
+.v55-card-actions{
+  display:grid;
+  grid-template-columns:1.6fr .9fr .9fr .9fr;
+  gap:8px;
+  padding:0 12px 12px;
+  margin-top:12px;
+}
+
+.v55-watch,
+.v55-small{
+  height:44px;
+  min-width:0;
+  border-radius:14px;
+  font-size:12px;
+}
+
+.v55-watch span{
+  font-size:12px;
+}
+
+.v55-watch i{
+  font-size:13px;
+}
+
+.v55-small span{
+  display:none;
+}
+
+.v55-small i{
+  font-size:18px;
+}
+
+.movie-card h4{
+  padding:0 12px;
+}
+
+.movie-card p{
+  padding:0 12px;
+}
