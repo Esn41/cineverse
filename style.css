@@ -829,3 +829,8 @@ footer button{
 .player-controls button{
   transition:.2s;
 }
+.empty-text{
+  color:#b9d8ff;
+  font-size:18px;
+  padding:20px;
+}
