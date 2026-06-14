@@ -132,10 +132,17 @@ function openDetails(id){
 
   document.getElementById("modalImg").src = selectedMovie.img;
   document.getElementById("modalTitle").innerText = selectedMovie.title;
-  document.getElementById("modalMeta").innerText =
-    `${selectedMovie.year} • ${selectedMovie.category} • ${selectedMovie.duration} • ${selectedMovie.language} • ⭐ ${selectedMovie.rating}`;
+
+  document.getElementById("modalMeta").innerHTML = `
+    <span>⭐ ${selectedMovie.rating}</span> •
+    <span>${selectedMovie.year}</span> •
+    <span>${selectedMovie.category}</span> •
+    <span>${selectedMovie.duration}</span> •
+    <span>${selectedMovie.language}</span>
+  `;
 
   document.getElementById("modalDesc").innerHTML = `
+    <strong>Film Açıklaması</strong><br>
     ${selectedMovie.desc}
     <br><br>
     <strong>Oyuncular:</strong> ${selectedMovie.actors}
