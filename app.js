@@ -31,11 +31,11 @@ function movieCard(movie){
       <h4>${movie.title}</h4>
       <p>${movie.year} <span class="rating">⭐ ${movie.rating}</span></p>
       <div class="card-actions">
-        <button onclick="watchMovie(${movie.id})">▶</button>
-        <button onclick="openDetails(${movie.id})">ℹ</button>
-        <button onclick="toggleFavorite(${movie.id})">${isFav ? "♥" : "♡"}</button>
-        <button onclick="toggleList(${movie.id})">${isList ? "✓" : "+"}</button>
-      </div>
+  <button onclick="watchMovie(${movie.id})"><i class="fa-solid fa-play"></i></button>
+  <button onclick="openDetails(${movie.id})"><i class="fa-solid fa-circle-info"></i></button>
+  <button onclick="toggleFavorite(${movie.id})"><i class="fa-regular fa-heart"></i></button>
+  <button onclick="toggleList(${movie.id})"><i class="fa-solid fa-plus"></i></button>
+</div>
     </div>
   `;
   
