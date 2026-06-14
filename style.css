@@ -457,3 +457,42 @@ footer button{
 .action-btn-small:active{
     transform:scale(.95);
 }
+.v55-card-actions{
+  display:grid;
+  grid-template-columns:1.7fr 1fr 1fr 1fr;
+  gap:8px;
+  margin-top:14px;
+}
+
+.v55-watch,
+.v55-small{
+  height:50px;
+  border:0;
+  border-radius:16px;
+  color:white;
+  background:rgba(15,45,85,.85);
+  border:1px solid rgba(80,160,255,.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+
+.v55-watch{
+  background:linear-gradient(135deg,#1498ff,#0058d9);
+  font-weight:800;
+}
+
+.v55-small{
+  flex-direction:column;
+  font-size:10px;
+}
+
+.v55-small i{
+  font-size:17px;
+}
+
+.v55-watch:active,
+.v55-small:active{
+  transform:scale(.94);
+}
