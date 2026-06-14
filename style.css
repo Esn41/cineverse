@@ -795,3 +795,37 @@ footer button{
   font-weight:800;
   backdrop-filter:blur(10px);
 }
+#playerPage{
+  padding:20px;
+}
+
+#playerTitle{
+  font-size:28px;
+  font-weight:800;
+  margin-bottom:16px;
+  color:white;
+}
+
+.back{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,.1);
+  color:white;
+  font-size:20px;
+  margin-bottom:20px;
+  backdrop-filter:blur(10px);
+}
+
+.netflix-player{
+  margin-bottom:20px;
+}
+
+.player-controls button:active{
+  transform:scale(.95);
+}
+
+.player-controls button{
+  transition:.2s;
+}
