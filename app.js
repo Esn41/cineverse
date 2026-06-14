@@ -30,11 +30,26 @@ function movieCard(movie){
       <img src="${movie.img}" alt="${movie.title}">
       <h4>${movie.title}</h4>
       <p>${movie.year} <span class="rating">⭐ ${movie.rating}</span></p>
-      <div class="card-actions">
-  <button onclick="watchMovie(${movie.id})"><i class="fa-solid fa-play"></i></button>
-  <button onclick="openDetails(${movie.id})"><i class="fa-solid fa-circle-info"></i></button>
-  <button onclick="toggleFavorite(${movie.id})"><i class="fa-regular fa-heart"></i></button>
-  <button onclick="toggleList(${movie.id})"><i class="fa-solid fa-plus"></i></button>
+      <div class="card-actions v55-card-actions">
+  <button onclick="watchMovie(${movie.id})" class="v55-watch">
+    <i class="fa-solid fa-play"></i>
+    <span>İzle</span>
+  </button>
+
+  <button onclick="openDetails(${movie.id})" class="v55-small">
+    <i class="fa-solid fa-circle-info"></i>
+    <span>Bilgi</span>
+  </button>
+
+  <button onclick="toggleFavorite(${movie.id})" class="v55-small">
+    <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+    <span>Favori</span>
+  </button>
+
+  <button onclick="toggleList(${movie.id})" class="v55-small">
+    <i class="${isList ? 'fa-solid fa-check' : 'fa-solid fa-list'}"></i>
+    <span>Liste</span>
+  </button>
 </div>
     </div>
   `;
