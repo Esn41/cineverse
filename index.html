@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CineVerse V4</title>
+  <title>CineVerse V5.8</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
@@ -11,118 +11,149 @@
 
 <div class="app">
 
-  <header class="header">
-    <div class="brand">
-      <div class="logo">CV</div>
-      <div>
-        <h1>CINE<span>VERSE</span></h1>
-        <p>SONSUZ FİLM EVRENİ</p>
-      </div>
+  <header class="top-header">
+    <div class="brand-mini">
+      <div class="n-logo">CV</div>
+      <h1>Ana Sayfa</h1>
     </div>
 
-    <div class="search">
-      <input id="searchInput" placeholder="Film ara..." />
-      <i class="fa-solid fa-magnifying-glass"></i>
+    <div class="top-icons">
+      <button onclick="showAllMovies()"><i class="fa-solid fa-tv"></i></button>
+      <button onclick="showList()"><i class="fa-solid fa-download"></i></button>
+      <button onclick="showFavorites()" class="bell">
+        <i class="fa-regular fa-bell"></i>
+        <span>10</span>
+      </button>
     </div>
   </header>
 
-  <nav class="nav">
-    <button onclick="goHome()" class="active"><i class="fa-solid fa-house"></i> Ana Sayfa</button>
-    <button onclick="showAllMovies()"><i class="fa-solid fa-clapperboard"></i> Filmler</button>
-    <button onclick="showMostWatched()"><i class="fa-solid fa-fire"></i> Popüler</button>
-    <button onclick="showNewMovies()"><i class="fa-solid fa-plus"></i> Yeni</button>
-    <button onclick="showCategories()"><i class="fa-solid fa-table-cells"></i> Kategoriler</button>
-    <button onclick="showList()"><i class="fa-regular fa-bookmark"></i> Listem</button>
-    <button onclick="showFavorites()"><i class="fa-regular fa-heart"></i> Favorilerim</button>
-    <button onclick="showContinueMovies()">
-  <i class="fa-solid fa-clock-rotate-left"></i>
-  Son İzlenenler
-</button>
+  <div class="search">
+    <input id="searchInput" placeholder="Film ara..." />
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </div>
+
+  <nav class="pill-nav">
+    <button onclick="showCategories()">Kategoriler</button>
+    <button onclick="showAllMovies()">Filmler</button>
+    <button onclick="showNewMovies()">Yeni ve Popüler</button>
+    <button onclick="showMostWatched()">Popüler</button>
+    <button onclick="showContinueMovies()">Devam Et</button>
   </nav>
 
   <main>
 
     <section id="homePage">
 
-      <section class="categories" id="categoryBar"></section>
+      <section class="big-hero">
+        <img id="heroImg" src="" alt="">
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <span class="mini-logo">CV</span>
+          <h2 id="heroTitle"></h2>
+          <p id="heroDesc"></p>
+
+          <div class="hero-buttons">
+            <button onclick="watchHero()" class="play-main">
+              <i class="fa-solid fa-play"></i> Oynat
+            </button>
+            <button onclick="addHeroToList()" class="list-main">
+              <i class="fa-solid fa-plus"></i> Listem
+            </button>
+          </div>
+        </div>
+      </section>
 
       <div class="section-title">
-        <h3>🔥 En Çok İzlenenler</h3>
+        <h3>🎮 Mobil Oyunlar</h3>
+        <button onclick="showList()">Listem <i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <section class="poster-row" id="gameRow"></section>
+
+      <div class="section-title">
+        <h3>▶️ İzlemeye Devam Et</h3>
+        <button onclick="showContinueMovies()">Tümünü Gör</button>
+      </div>
+      <section class="continue-row" id="continuePreview"></section>
+
+      <div class="section-title">
+        <h3>👍 Bunları Seveceğini Düşünüyoruz</h3>
         <button onclick="showMostWatched()">Tümünü Gör</button>
       </div>
-      <section class="movie-row" id="popularRow"></section>
+      <section class="poster-row" id="popularRow"></section>
 
       <div class="section-title">
         <h3>✨ Yeni Eklenenler</h3>
         <button onclick="showNewMovies()">Tümünü Gör</button>
       </div>
-      <section class="movie-row" id="newRow"></section>
+      <section class="poster-row" id="newRow"></section>
+
     </section>
 
     <section id="resultPage" class="hidden">
       <h2 id="resultTitle"></h2>
-      <div id="resultGrid" class="movie-grid"></div>
+      <div id="resultGrid" class="result-grid"></div>
     </section>
 
     <section id="playerPage" class="hidden">
       <button class="back" onclick="goHome()">← Geri Dön</button>
       <h2 id="playerTitle"></h2>
-      <div class="netflix-player">
-  <iframe id="player" allowfullscreen></iframe>
 
-  <div class="player-controls">
-    <button onclick="back10()">⏪ 10</button>
-    <button onclick="playPause()">▶ / ⏸</button>
-    <button onclick="forward10()">10 ⏩</button>
-    <button onclick="fullscreenPlayer()">⛶</button>
-  </div>
-</div>
+      <div class="netflix-player">
+        <iframe id="player" allowfullscreen></iframe>
+
+        <div class="player-controls">
+          <button onclick="back10()">⏪ 10</button>
+          <button onclick="playPause()">▶ / ⏸</button>
+          <button onclick="forward10()">10 ⏩</button>
+          <button onclick="fullscreenPlayer()">⛶</button>
+        </div>
+      </div>
     </section>
 
     <section id="aboutPage" class="text-page hidden">
       <h2>Hakkımızda</h2>
-      <p>
-        CineVerse, klasikleşmiş ve yasal olarak paylaşılabilen film içeriklerini
-        modern bir arayüzle kullanıcılarla buluşturmayı amaçlayan film platformudur.
-      </p>
+      <p>CineVerse modern film ve video deneyimi sunan özel bir platformdur.</p>
     </section>
 
     <section id="privacyPage" class="text-page hidden">
       <h2>Gizlilik Politikası</h2>
-      <p>
-        CineVerse kullanıcı gizliliğine önem verir. Favoriler ve liste bilgileri
-        yalnızca cihazınızın tarayıcı hafızasında saklanır.
-      </p>
+      <p>Favoriler, liste ve son izlenenler cihazınızın tarayıcı hafızasında saklanır.</p>
     </section>
 
     <section id="contactPage" class="text-page hidden">
       <h2>İletişim</h2>
-      <p>Destek ve telif bildirimleri için: destek@cineverse.com</p>
+      <p>Destek: destek@cineverse.com</p>
     </section>
 
     <section id="termsPage" class="text-page hidden">
       <h2>Kullanım Koşulları</h2>
-      <p>
-        CineVerse kullanıcısı siteyi yasalara uygun kullanmayı kabul eder.
-        İçeriklerin izinsiz kopyalanması yasaktır.
-      </p>
+      <p>CineVerse yasal kullanım koşullarına uygun şekilde kullanılmalıdır.</p>
     </section>
 
   </main>
 
-  <footer>
-    <span>© 2026 CineVerse — Tüm Hakları Saklıdır.</span>
-    <button onclick="showText('aboutPage')">Hakkımızda</button>
-    <button onclick="showText('privacyPage')">Gizlilik Politikası</button>
-    <button onclick="showText('contactPage')">İletişim</button>
-    <button onclick="showText('termsPage')">Kullanım Koşulları</button>
+  <footer class="bottom-nav">
+    <button onclick="goHome()">
+      <i class="fa-solid fa-house"></i>
+      <span>Ana Sayfa</span>
+    </button>
+
+    <button onclick="focusSearch()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span>Ara</span>
+    </button>
+
+    <button onclick="showList()">
+      <i class="fa-solid fa-user"></i>
+      <span>Benim CineVerse’im</span>
+    </button>
   </footer>
 
 </div>
+
 <div id="movieModal" class="movie-modal">
   <div class="modal-content">
     <button class="modal-close" onclick="closeDetails()">×</button>
-
     <img id="modalImg" src="" alt="Film">
 
     <div class="modal-body">
@@ -132,6 +163,7 @@
     </div>
   </div>
 </div>
+
 <script src="app.js"></script>
 </body>
 </html>
