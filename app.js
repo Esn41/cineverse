@@ -7,18 +7,18 @@ const movies = [
     rating: 8.5,
     isNew: false,
     img: "https://upload.wikimedia.org/wikipedia/commons/9/92/NosferatuPoster.jpg",
-    desc: "Kont Dracula'dan ilham alan bu sessiz korku klasiği, sinema tarihinin en etkileyici yapımlarındandır.",
+    desc: "Kont Dracula'dan ilham alan sessiz korku klasiği.",
     video: "https://archive.org/embed/Nosferatu1922"
   },
   {
     id: 2,
     title: "The General",
     year: 1926,
-    category: "Klasikler",
+    category: "Klasik",
     rating: 8.3,
     isNew: false,
     img: "https://upload.wikimedia.org/wikipedia/commons/0/04/The_General_%281926%29_poster.jpg",
-    desc: "Buster Keaton'ın unutulmaz sessiz komedi ve aksiyon klasiği.",
+    desc: "Buster Keaton'ın unutulmaz sessiz komedi klasiği.",
     video: "https://archive.org/embed/TheGeneral"
   },
   {
@@ -29,7 +29,7 @@ const movies = [
     rating: 8.6,
     isNew: false,
     img: "https://upload.wikimedia.org/wikipedia/commons/0/06/Metropolisposter.jpg",
-    desc: "Fritz Lang imzalı bilim kurgu sinemasının öncü yapımlarından biri.",
+    desc: "Bilim kurgu sinemasının öncü yapımlarından biri.",
     video: "https://archive.org/embed/Metropolis1927Restoration"
   },
   {
@@ -40,7 +40,7 @@ const movies = [
     rating: 8.4,
     isNew: false,
     img: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Phantom_of_the_opera_1925_poster.jpg",
-    desc: "Gotik atmosferiyle ünlü klasik korku ve dram filmi.",
+    desc: "Gotik atmosferiyle ünlü klasik korku filmi.",
     video: "https://archive.org/embed/ThePhantomOfTheOpera1925"
   },
   {
@@ -51,7 +51,7 @@ const movies = [
     rating: 8.4,
     isNew: false,
     img: "https://upload.wikimedia.org/wikipedia/commons/3/3f/The_Kid_1921.jpg",
-    desc: "Charlie Chaplin'in sıcak, duygusal ve komik başyapıtlarından biri.",
+    desc: "Charlie Chaplin'in sevilen komedi klasiği.",
     video: "https://archive.org/embed/TheKid"
   },
   {
@@ -62,7 +62,7 @@ const movies = [
     rating: 8.2,
     isNew: false,
     img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Dr._Jekyll_and_Mr._Hyde_%281920%29_poster.jpg",
-    desc: "İnsan doğasının karanlık tarafını anlatan klasik korku hikâyesi.",
+    desc: "Karanlık insan doğasını anlatan klasik yapım.",
     video: "https://archive.org/embed/DrJekyllAndMrHyde1920"
   },
   {
@@ -73,7 +73,7 @@ const movies = [
     rating: 8.1,
     isNew: true,
     img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Das_Cabinet_des_Dr._Caligari_poster.jpg",
-    desc: "Alman dışavurumcu sinemasının en önemli örneklerinden biri.",
+    desc: "Alman dışavurumcu sinemasının önemli örneklerinden.",
     video: "https://archive.org/embed/TheCabinetOfDrCaligari1920"
   },
   {
@@ -84,7 +84,7 @@ const movies = [
     rating: 6.6,
     isNew: true,
     img: "https://upload.wikimedia.org/wikipedia/commons/9/97/Plan_nine_from_outer_space.jpg",
-    desc: "Kült bilim kurgu filmleri arasında yer alan sıra dışı bir yapım.",
+    desc: "Kült bilim kurgu filmlerinden biri.",
     video: "https://archive.org/embed/Plan_9_from_Outer_Space_1959"
   },
   {
@@ -95,7 +95,7 @@ const movies = [
     rating: 7.6,
     isNew: true,
     img: "https://upload.wikimedia.org/wikipedia/commons/0/06/Carnival_of_Souls_%281962%29_poster.jpg",
-    desc: "Gizemli ve rahatsız edici atmosferiyle kültleşmiş bağımsız korku filmi.",
+    desc: "Gizemli atmosferiyle kültleşmiş korku filmi.",
     video: "https://archive.org/embed/CarnivalofSouls"
   },
   {
@@ -106,18 +106,18 @@ const movies = [
     rating: 8.5,
     isNew: true,
     img: "https://upload.wikimedia.org/wikipedia/commons/8/80/Battleship_Potemkin_poster.jpg",
-    desc: "Sinema tarihinin en etkili sessiz dram filmlerinden biri.",
+    desc: "Sinema tarihinin etkili sessiz dram filmlerinden.",
     video: "https://archive.org/embed/BattleshipPotemkin"
   },
   {
     id: 11,
     title: "The Thief of Bagdad",
     year: 1924,
-    category: "Klasikler",
+    category: "Aksiyon",
     rating: 7.8,
     isNew: true,
     img: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Thief_of_Bagdad_poster.jpg",
-    desc: "Fantastik macera sinemasının erken dönem görkemli örneklerinden biri.",
+    desc: "Fantastik macera sinemasının erken dönem örneği.",
     video: "https://archive.org/embed/TheThiefOfBagdad1924"
   },
   {
@@ -134,202 +134,167 @@ const movies = [
 ];
 
 const categories = [
-  { name: "Klasikler", icon: "fa-film" },
-  { name: "Korku", icon: "fa-ghost" },
-  { name: "Bilim Kurgu", icon: "fa-planet-ringed" },
-  { name: "Komedi", icon: "fa-face-smile" },
-  { name: "Aksiyon", icon: "fa-bolt" },
-  { name: "Dram", icon: "fa-masks-theater" },
-  { name: "Belgesel", icon: "fa-video" },
-  { name: "Animasyon", icon: "fa-clapperboard" }
+  ["Klasik", "fa-film"],
+  ["Korku", "fa-ghost"],
+  ["Bilim Kurgu", "fa-planet-ringed"],
+  ["Komedi", "fa-face-smile"],
+  ["Aksiyon", "fa-bolt"],
+  ["Dram", "fa-masks-theater"],
+  ["Belgesel", "fa-video"],
+  ["Animasyon", "fa-clapperboard"]
 ];
 
-let selectedMovieId = null;
+let selectedMovie = null;
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+let list = JSON.parse(localStorage.getItem("list")) || [];
 
-const pages = {
-  home: document.getElementById("homePage"),
-  movies: document.getElementById("moviesPage"),
-  categories: document.getElementById("categoriesPage"),
-  watchlist: document.getElementById("watchlistPage"),
-  favorites: document.getElementById("favoritesPage"),
-  watch: document.getElementById("watchPage"),
-  about: document.getElementById("aboutPage"),
-  privacy: document.getElementById("privacyPage"),
-  contact: document.getElementById("contactPage"),
-  terms: document.getElementById("termsPage")
-};
-
-function showPage(pageName) {
-  Object.values(pages).forEach(page => page.classList.remove("active-page"));
-  pages[pageName].classList.add("active-page");
-
-  document.querySelectorAll(".side-link, .nav-btn").forEach(btn => btn.classList.remove("active"));
-
-  if (pageName === "movies") renderMovies(movies);
-  if (pageName === "watchlist") renderWatchlist();
-  if (pageName === "favorites") renderFavorites();
-  if (pageName === "categories") renderCategoryPage();
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function toggleSidebar() {
-  document.querySelector(".sidebar").classList.toggle("open");
-}
-
-function movieCard(movie) {
+function card(movie) {
   return `
     <div class="movie-card">
-      ${movie.isNew ? `<div class="badge">Yeni</div>` : ""}
+      ${movie.isNew ? `<div class="badge">YENİ</div>` : ""}
       <img src="${movie.img}" alt="${movie.title}">
-      <div class="movie-info">
-        <h4>${movie.title}</h4>
-        <p>${movie.year} <span class="rating">⭐ ${movie.rating}</span></p>
-      </div>
-      <div class="card-actions">
+      <h4>${movie.title}</h4>
+      <p>${movie.year} <span class="rating">⭐ ${movie.rating}</span></p>
+      <div class="card-buttons">
         <button onclick="watchMovie(${movie.id})"><i class="fa-solid fa-play"></i></button>
         <button onclick="openDetails(${movie.id})"><i class="fa-solid fa-circle-info"></i></button>
-        <button onclick="toggleFavorite(${movie.id})"><i class="fa-regular fa-heart"></i></button>
-        <button onclick="addToList(${movie.id})"><i class="fa-solid fa-plus"></i></button>
+        <button onclick="addFavorite(${movie.id})"><i class="fa-regular fa-heart"></i></button>
       </div>
     </div>
   `;
 }
 
 function renderHome() {
-  document.getElementById("popularGrid").innerHTML = movies.slice(0, 6).map(movieCard).join("");
-  document.getElementById("newGrid").innerHTML = movies.filter(m => m.isNew).map(movieCard).join("");
-}
+  document.getElementById("popularRow").innerHTML = movies.slice(0, 6).map(card).join("");
+  document.getElementById("newRow").innerHTML = movies.filter(m => m.isNew).map(card).join("");
 
-function renderMovies(list) {
-  document.getElementById("movieGrid").innerHTML = list.map(movieCard).join("");
-}
-
-function renderCategoryButtons() {
-  const html = categories.map(cat => `
-    <button class="cat-btn" onclick="filterByCategory('${cat.name}')">
-      <i class="fa-solid ${cat.icon}"></i> ${cat.name}
+  document.getElementById("categoryBar").innerHTML = categories.map(c => `
+    <button class="cat" onclick="filterMovie('${c[0]}')">
+      <i class="fa-solid ${c[1]}"></i>${c[0]}
     </button>
   `).join("");
-
-  document.getElementById("categoryButtons").innerHTML = html;
 }
 
-function renderCategoryPage() {
-  const html = categories.map(cat => `
-    <button class="cat-btn" onclick="filterCategoryPage('${cat.name}')">
-      <i class="fa-solid ${cat.icon}"></i> ${cat.name}
-    </button>
-  `).join("");
-
-  document.getElementById("categoryPageButtons").innerHTML = html;
-  document.getElementById("categoryResult").innerHTML = movies.map(movieCard).join("");
+function hideSections() {
+  document.querySelector(".hero").style.display = "none";
+  document.querySelector(".categories").style.display = "none";
+  document.querySelectorAll(".row-head").forEach(e => e.style.display = "none");
+  document.querySelectorAll(".movie-row").forEach(e => e.style.display = "none");
+  document.getElementById("resultArea").style.display = "none";
+  document.querySelectorAll(".text-page").forEach(e => e.style.display = "none");
+  document.getElementById("playerPage").style.display = "none";
+  document.getElementById("player").src = "";
 }
 
-function filterByCategory(category) {
-  showPage("movies");
-  const result = movies.filter(movie => movie.category === category);
-  renderMovies(result);
+function goHome() {
+  hideSections();
+  document.querySelector(".hero").style.display = "flex";
+  document.querySelector(".categories").style.display = "flex";
+  document.querySelectorAll(".row-head").forEach(e => e.style.display = "flex");
+  document.querySelectorAll(".movie-row").forEach(e => e.style.display = "flex");
+  window.scrollTo(0,0);
 }
 
-function filterCategoryPage(category) {
-  const result = movies.filter(movie => movie.category === category);
-  document.getElementById("categoryResult").innerHTML = result.length
-    ? result.map(movieCard).join("")
-    : `<p>Bu kategoride henüz film yok.</p>`;
+function showResults(title, items) {
+  hideSections();
+  document.getElementById("resultArea").style.display = "block";
+  document.getElementById("resultTitle").innerText = title;
+  document.getElementById("resultGrid").innerHTML = items.length ? items.map(card).join("") : "<p>Film bulunamadı.</p>";
+  window.scrollTo(0,0);
+}
+
+function showAllMovies() {
+  showResults("Tüm Filmler", movies);
+}
+
+function showMostWatched() {
+  showResults("En Çok İzlenenler", movies.slice().sort((a,b) => b.rating - a.rating));
+}
+
+function showNewMovies() {
+  showResults("Yeni Eklenenler", movies.filter(m => m.isNew));
+}
+
+function showCategories() {
+  showResults("Kategoriler", movies);
+}
+
+function filterMovie(cat) {
+  showResults(cat, movies.filter(m => m.category === cat));
+}
+
+function addFavorite(id) {
+  if (!favorites.includes(id)) favorites.push(id);
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  alert("Favorilere eklendi.");
+}
+
+function addToList(id) {
+  if (!list.includes(id)) list.push(id);
+  localStorage.setItem("list", JSON.stringify(list));
+  alert("Listene eklendi.");
+}
+
+function showFavorites() {
+  showResults("Favorilerim", movies.filter(m => favorites.includes(m.id)));
+}
+
+function showList() {
+  showResults("Listem", movies.filter(m => list.includes(m.id)));
 }
 
 function openDetails(id) {
-  selectedMovieId = id;
-  const movie = movies.find(m => m.id === id);
-
-  document.getElementById("detailImage").src = movie.img;
-  document.getElementById("detailTitle").innerText = movie.title;
-  document.getElementById("detailInfo").innerText = `${movie.year} • ${movie.category} • ⭐ ${movie.rating}`;
-  document.getElementById("detailDesc").innerText = movie.desc;
-
-  document.getElementById("detailModal").style.display = "flex";
+  selectedMovie = movies.find(m => m.id === id);
+  document.getElementById("modalImg").src = selectedMovie.img;
+  document.getElementById("modalTitle").innerText = selectedMovie.title;
+  document.getElementById("modalInfo").innerText = `${selectedMovie.year} • ${selectedMovie.category} • ⭐ ${selectedMovie.rating}`;
+  document.getElementById("modalDesc").innerText = selectedMovie.desc;
+  document.getElementById("modal").style.display = "flex";
 }
 
 function closeDetails() {
-  document.getElementById("detailModal").style.display = "none";
+  document.getElementById("modal").style.display = "none";
 }
 
 function watchMovie(id) {
   const movie = movies.find(m => m.id === id);
-
-  document.getElementById("watchTitle").innerText = movie.title;
-  document.getElementById("moviePlayer").src = movie.video;
-  selectedMovieId = id;
-
+  hideSections();
+  document.getElementById("playerPage").style.display = "block";
+  document.getElementById("playerTitle").innerText = movie.title;
+  document.getElementById("player").src = movie.video;
   closeDetails();
-  showPage("watch");
+  window.scrollTo(0,0);
 }
 
 function watchSelected() {
-  if (selectedMovieId) watchMovie(selectedMovieId);
-}
-
-function toggleFavorite(id) {
-  if (favorites.includes(id)) {
-    favorites = favorites.filter(item => item !== id);
-    alert("Favorilerden kaldırıldı.");
-  } else {
-    favorites.push(id);
-    alert("Favorilere eklendi.");
-  }
-
-  localStorage.setItem("favorites", JSON.stringify(favorites));
+  if (selectedMovie) watchMovie(selectedMovie.id);
 }
 
 function favoriteSelected() {
-  if (selectedMovieId) toggleFavorite(selectedMovieId);
-}
-
-function addToList(id) {
-  if (!watchlist.includes(id)) {
-    watchlist.push(id);
-    localStorage.setItem("watchlist", JSON.stringify(watchlist));
-    alert("Listene eklendi.");
-  } else {
-    alert("Bu film zaten listende.");
-  }
+  if (selectedMovie) addFavorite(selectedMovie.id);
 }
 
 function listSelected() {
-  if (selectedMovieId) addToList(selectedMovieId);
+  if (selectedMovie) addToList(selectedMovie.id);
 }
 
-function renderFavorites() {
-  const list = movies.filter(movie => favorites.includes(movie.id));
-  document.getElementById("favoritesGrid").innerHTML = list.length
-    ? list.map(movieCard).join("")
-    : `<p>Henüz favori film eklemedin.</p>`;
+function showText(id) {
+  hideSections();
+  document.getElementById(id).style.display = "block";
+  window.scrollTo(0,0);
 }
 
-function renderWatchlist() {
-  const list = movies.filter(movie => watchlist.includes(movie.id));
-  document.getElementById("watchlistGrid").innerHTML = list.length
-    ? list.map(movieCard).join("")
-    : `<p>Listene henüz film eklemedin.</p>`;
-}
+document.getElementById("searchInput").addEventListener("input", e => {
+  const q = e.target.value.toLowerCase();
+  if (!q) return goHome();
 
-document.getElementById("searchInput").addEventListener("input", function () {
-  const value = this.value.toLowerCase();
-
-  const filtered = movies.filter(movie =>
-    movie.title.toLowerCase().includes(value) ||
-    movie.category.toLowerCase().includes(value) ||
-    movie.year.toString().includes(value)
+  const found = movies.filter(m =>
+    m.title.toLowerCase().includes(q) ||
+    m.category.toLowerCase().includes(q) ||
+    String(m.year).includes(q)
   );
 
-  showPage("movies");
-  renderMovies(filtered);
+  showResults("Arama Sonuçları", found);
 });
 
 renderHome();
-renderMovies(movies);
-renderCategoryButtons();
-renderCategoryPage();
