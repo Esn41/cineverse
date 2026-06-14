@@ -101,6 +101,15 @@ function showResults(title,items){
 function showAllMovies(){ showResults("Tüm Filmler", movies); }
 function showMostWatched(){ showResults("En Çok İzlenenler", movies.slice().sort((a,b)=>b.rating-a.rating)); }
 function showNewMovies(){ showResults("Yeni Eklenenler", movies.filter(m=>m.isNew)); }
+function showContinueMovies(){
+  const continueList = JSON.parse(localStorage.getItem("continueList")) || [];
+
+  const continueMovies = continueList
+    .map(id => movies.find(m => m.id === id))
+    .filter(Boolean);
+
+  showResults("Son İzlenenler", continueMovies);
+}
 function showCategories(){
   hideAll();
   document.getElementById("resultPage").classList.remove("hidden");
