@@ -708,3 +708,56 @@ footer button{
   color:#06101f;
   font-weight:900;
 }
+/* V5.7.1 PREMIUM EFFECTS */
+
+.movie-card{
+  transition:.3s ease;
+}
+
+.movie-card:active{
+  transform:scale(.97);
+}
+
+.movie-card img{
+  transition:.45s ease;
+}
+
+.movie-card:hover img{
+  transform:scale(1.04);
+}
+
+#movieModal.show .modal-content{
+  animation:modalUp .35s ease;
+}
+
+@keyframes modalUp{
+  from{
+    transform:translateY(100px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+
+#modalMeta span:first-child{
+  background:linear-gradient(135deg,#ffd36b,#ff9500);
+  color:#06101f;
+  font-weight:900;
+  box-shadow:0 0 18px rgba(255,170,0,.35);
+}
+
+.v56-modal-actions button:first-child{
+  background:linear-gradient(135deg,#1597ff,#0057d9);
+  box-shadow:0 0 24px rgba(0,140,255,.45);
+}
+
+.v55-small:active i.fa-heart{
+  transform:scale(1.35);
+  color:#ff3b6b;
+}
+
+.v55-small i{
+  transition:.25s ease;
+}
