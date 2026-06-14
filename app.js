@@ -247,3 +247,10 @@ renderHome();
 function closeDetails(){
   document.getElementById("movieModal").classList.remove("show");
 }
+function fullscreenPlayer(){
+  const playerBox = document.querySelector(".netflix-player");
+
+  if(playerBox.requestFullscreen){
+    playerBox.requestFullscreen();
+  }
+}
