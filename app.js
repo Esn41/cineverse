@@ -2,57 +2,91 @@ const movies = [
   {
     id:1,
     title:"Ragnarok",
+    type:"Dizi",
     year:2020,
     category:"Dram",
     rating:8.4,
     isNew:true,
     duration:"45 dk",
-    language:"Türkçe",
+    language:"Türkçe Dublaj",
     actors:"David Stakston, Jonas Strand Gravli",
-    img:"https://picsum.photos/500/800?random=501",
+    img:"https://picsum.photos/500/800?random=701",
     desc:"Mitolojik atmosferli, heyecanlı bir yapım.",
     video:"https://www.w3schools.com/html/mov_bbb.mp4"
   },
   {
     id:2,
-    title:"Wonder Woman 1984",
-    year:2020,
+    title:"The Batman",
+    type:"Film",
+    year:2022,
     category:"Aksiyon",
-    rating:7.8,
+    rating:8.2,
     isNew:false,
-    duration:"151 dk",
-    language:"Türkçe",
-    actors:"Gal Gadot, Chris Pine",
-    img:"https://picsum.photos/500/800?random=502",
-    desc:"Süper kahraman aksiyon filmi.",
+    duration:"176 dk",
+    language:"Türkçe Altyazı",
+    actors:"Robert Pattinson, Zoë Kravitz",
+    img:"https://picsum.photos/500/800?random=702",
+    desc:"Karanlık atmosferli etkileyici bir Batman hikayesi.",
     video:"https://www.w3schools.com/html/movie.mp4"
   },
   {
     id:3,
-    title:"Altın Topraklar",
-    year:2023,
-    category:"Dram",
-    rating:8.1,
+    title:"Dune Part Two",
+    type:"Film",
+    year:2024,
+    category:"Bilim Kurgu",
+    rating:8.7,
     isNew:true,
-    duration:"120 dk",
-    language:"Türkçe",
-    actors:"Oyuncu 1, Oyuncu 2",
-    img:"https://picsum.photos/500/800?random=503",
-    desc:"Macera ve dramı birleştiren güçlü bir hikaye.",
+    duration:"166 dk",
+    language:"Türkçe Dublaj",
+    actors:"Timothée Chalamet, Zendaya",
+    img:"https://picsum.photos/500/800?random=703",
+    desc:"Çöl gezegeninde geçen büyük bilim kurgu macerası.",
     video:"https://www.w3schools.com/html/mov_bbb.mp4"
   },
   {
     id:4,
-    title:"Escobar",
+    title:"Oppenheimer",
+    type:"Film",
+    year:2023,
+    category:"Dram",
+    rating:8.6,
+    isNew:true,
+    duration:"180 dk",
+    language:"Türkçe Altyazı",
+    actors:"Cillian Murphy, Emily Blunt",
+    img:"https://picsum.photos/500/800?random=704",
+    desc:"Tarihin en büyük bilimsel projelerinden birinin dramatik hikayesi.",
+    video:"https://www.w3schools.com/html/movie.mp4"
+  },
+  {
+    id:5,
+    title:"Stranger Things",
+    type:"Dizi",
     year:2022,
-    category:"Aksiyon",
-    rating:8.0,
+    category:"Bilim Kurgu",
+    rating:8.7,
     isNew:false,
-    duration:"110 dk",
-    language:"Türkçe",
-    actors:"Oyuncu 1, Oyuncu 2",
-    img:"https://picsum.photos/500/800?random=504",
-    desc:"Suç dünyasında geçen tempolu bir hikaye.",
+    duration:"50 dk",
+    language:"Türkçe Dublaj",
+    actors:"Millie Bobby Brown, Finn Wolfhard",
+    img:"https://picsum.photos/500/800?random=705",
+    desc:"Gizem, macera ve bilim kurgunun birleşimi.",
+    video:"https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    id:6,
+    title:"John Wick 4",
+    type:"Film",
+    year:2023,
+    category:"Aksiyon",
+    rating:8.1,
+    isNew:false,
+    duration:"169 dk",
+    language:"Türkçe Altyazı",
+    actors:"Keanu Reeves, Donnie Yen",
+    img:"https://picsum.photos/500/800?random=706",
+    desc:"Aksiyon temposu yüksek karanlık bir intikam hikayesi.",
     video:"https://www.w3schools.com/html/movie.mp4"
   }
 ];
@@ -77,12 +111,14 @@ function movieCard(movie){
 
   return `
     <div class="movie-card">
-      ${movie.isNew ? `<div class="badge">TOP 10</div>` : ""}
-
       <img src="${movie.img}" alt="${movie.title}" onclick="openDetails(${movie.id})">
 
       <h4>${movie.title}</h4>
-      <p>${movie.category} <span class="rating">⭐ ${movie.rating}</span></p>
+      <p>
+        ${movie.year} • ${movie.language}
+        <br>
+        <span class="rating">⭐ ${movie.rating}</span>
+      </p>
 
       <div class="card-actions">
         <button onclick="watchMovie(${movie.id})">
@@ -98,7 +134,31 @@ function movieCard(movie){
         </button>
 
         <button onclick="toggleList(${movie.id})">
-          <i class="${isList ? "fa-solid fa-check" : "fa-solid fa-ellipsis-vertical"}"></i>
+          <i class="${isList ? "fa-solid fa-check" : "fa-solid fa-plus"}"></i>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderHero(){
+  heroMovie = movies[0];
+
+  document.getElementById("heroSlider").style.backgroundImage =
+    `url('${heroMovie.img}')`;
+
+  document.getElementById("heroSlider").innerHTML = `
+    <div class="hero-overlay">
+      <h2>${heroMovie.title}</h2>
+      <p>${heroMovie.category} • ${heroMovie.year} • ⭐ ${heroMovie.rating}</p>
+
+      <div class="hero-buttons">
+        <button class="play-btn" onclick="watchMovie(${heroMovie.id})">
+          <i class="fa-solid fa-play"></i> Oynat
+        </button>
+
+        <button class="list-btn" onclick="toggleList(${heroMovie.id})">
+          <i class="fa-solid fa-plus"></i> Listem
         </button>
       </div>
     </div>
@@ -106,35 +166,15 @@ function movieCard(movie){
 }
 
 function renderHome(){
-  heroMovie = movies[0];
-
-  document.getElementById("heroImg").src = heroMovie.img;
-  document.getElementById("heroTitle").innerText = heroMovie.title;
-  document.getElementById("heroDesc").innerText =
-    `${heroMovie.category} • ${heroMovie.language} • ${heroMovie.year}`;
-
-  const continueList = JSON.parse(localStorage.getItem("continueList")) || [];
-  const continueMovies = continueList
-    .map(id => movies.find(m => m.id === id))
-    .filter(Boolean);
-
-  document.getElementById("continuePreview").innerHTML =
-    continueMovies.length
-      ? continueMovies.map(movieCard).join("")
-      : "<p class='empty-text'>Henüz izlenen film yok.</p>";
-
-  document.getElementById("popularRow").innerHTML =
-    movies.slice().sort((a,b)=>b.rating-a.rating).map(movieCard).join("");
-
-  document.getElementById("newRow").innerHTML =
-    movies.filter(m=>m.isNew).map(movieCard).join("");
+  renderHero();
+  showTab("new");
 }
 
 function hideAll(){
   document.getElementById("homePage").classList.add("hidden");
   document.getElementById("resultPage").classList.add("hidden");
   document.getElementById("playerPage").classList.add("hidden");
-  document.querySelectorAll(".text-page").forEach(p=>p.classList.add("hidden"));
+  document.getElementById("menuPage").classList.add("hidden");
 
   const player = document.getElementById("player");
   player.pause();
@@ -148,6 +188,29 @@ function goHome(){
   window.scrollTo(0,0);
 }
 
+function showTab(type){
+  const buttons = document.querySelectorAll(".tabs button");
+  buttons.forEach(btn => btn.classList.remove("active"));
+
+  if(type === "new"){
+    buttons[0].classList.add("active");
+    document.getElementById("homeGrid").innerHTML =
+      movies.filter(m=>m.isNew).map(movieCard).join("");
+  }
+
+  if(type === "recommended"){
+    buttons[1].classList.add("active");
+    document.getElementById("homeGrid").innerHTML =
+      movies.map(movieCard).join("");
+  }
+
+  if(type === "imdb"){
+    buttons[2].classList.add("active");
+    document.getElementById("homeGrid").innerHTML =
+      movies.filter(m=>m.rating >= 7).map(movieCard).join("");
+  }
+}
+
 function showResults(title,items){
   hideAll();
   document.getElementById("resultPage").classList.remove("hidden");
@@ -156,25 +219,23 @@ function showResults(title,items){
   document.getElementById("resultGrid").innerHTML =
     items.length
       ? items.map(movieCard).join("")
-      : "<p class='empty-text'>Film bulunamadı.</p>";
+      : "<p class='empty-text'>İçerik bulunamadı.</p>";
 
   window.scrollTo(0,0);
 }
 
 function showAllMovies(){
-  showResults("Filmler", movies);
+  showResults("Filmler", movies.filter(m=>m.type === "Film"));
 }
 
-function showMostWatched(){
-  showResults("Popüler", movies.slice().sort((a,b)=>b.rating-a.rating));
-}
-
-function showNewMovies(){
-  showResults("Yeni ve Popüler", movies.filter(m=>m.isNew));
+function showSeries(){
+  showResults("Diziler", movies.filter(m=>m.type === "Dizi"));
 }
 
 function showCategories(){
-  showResults("Kategoriler", []);
+  hideAll();
+  document.getElementById("resultPage").classList.remove("hidden");
+  document.getElementById("resultTitle").innerText = "Kategoriler";
 
   document.getElementById("resultGrid").innerHTML = categories.map(c => `
     <button class="category-card" onclick="filterMovie('${c[0]}')">
@@ -185,7 +246,15 @@ function showCategories(){
 }
 
 function filterMovie(cat){
-  showResults(cat, movies.filter(m=>m.category===cat));
+  showResults(cat, movies.filter(m=>m.category === cat));
+}
+
+function showFavorites(){
+  showResults("Favorilerim", movies.filter(m=>favorites.includes(m.id)));
+}
+
+function showList(){
+  showResults("Listem", movies.filter(m=>list.includes(m.id)));
 }
 
 function showContinueMovies(){
@@ -195,16 +264,20 @@ function showContinueMovies(){
     .map(id => movies.find(m => m.id === id))
     .filter(Boolean);
 
-  showResults("İzlemeye Devam Et", continueMovies);
+  showResults("Son İzlenenler", continueMovies);
+}
+
+function showMenu(){
+  hideAll();
+  document.getElementById("menuPage").classList.remove("hidden");
+  window.scrollTo(0,0);
 }
 
 function toggleFavorite(id){
   if(favorites.includes(id)){
     favorites = favorites.filter(x => x !== id);
-    alert("Favorilerden kaldırıldı.");
   }else{
     favorites.push(id);
-    alert("Favorilere eklendi.");
   }
 
   localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -214,22 +287,12 @@ function toggleFavorite(id){
 function toggleList(id){
   if(list.includes(id)){
     list = list.filter(x => x !== id);
-    alert("Listemden kaldırıldı.");
   }else{
     list.push(id);
-    alert("Listeme eklendi.");
   }
 
   localStorage.setItem("list", JSON.stringify(list));
   renderHome();
-}
-
-function showFavorites(){
-  showResults("Favorilerim", movies.filter(m=>favorites.includes(m.id)));
-}
-
-function showList(){
-  showResults("Benim CineVerse’im", movies.filter(m=>list.includes(m.id)));
 }
 
 function openDetails(id){
@@ -286,7 +349,7 @@ function watchMovie(id){
   let continueList = JSON.parse(localStorage.getItem("continueList")) || [];
   continueList = continueList.filter(x => x !== id);
   continueList.unshift(id);
-  continueList = continueList.slice(0,6);
+  continueList = continueList.slice(0,8);
   localStorage.setItem("continueList", JSON.stringify(continueList));
 
   hideAll();
@@ -308,14 +371,6 @@ function watchMovie(id){
 
   closeDetails();
   window.scrollTo(0,0);
-}
-
-function watchHero(){
-  watchMovie(heroMovie.id);
-}
-
-function addHeroToList(){
-  toggleList(heroMovie.id);
 }
 
 function playPause(){
@@ -382,10 +437,12 @@ document.getElementById("player").addEventListener("timeupdate", function(){
   }
 });
 
-function showText(id){
-  hideAll();
-  document.getElementById(id).classList.remove("hidden");
-  window.scrollTo(0,0);
+function focusSearch(){
+  document.getElementById("searchInput").focus();
+}
+
+function toggleTheme(){
+  document.body.classList.toggle("light");
 }
 
 document.getElementById("searchInput").addEventListener("input", function(){
@@ -399,6 +456,7 @@ document.getElementById("searchInput").addEventListener("input", function(){
   const found = movies.filter(m =>
     m.title.toLowerCase().includes(q) ||
     m.category.toLowerCase().includes(q) ||
+    m.type.toLowerCase().includes(q) ||
     String(m.year).includes(q)
   );
 
