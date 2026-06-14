@@ -159,7 +159,10 @@ function openDetails(id){
   document.getElementById("modalDesc").innerHTML = `
     <strong>Film Açıklaması</strong>
     <p>${selectedMovie.desc || "Bu film için açıklama yakında eklenecek."}</p>
-
+<div class="modal-actors">
+  <strong>Oyuncular</strong>
+  <p>${selectedMovie.actors || "Oyuncu bilgisi yakında eklenecek."}</p>
+</div>
     <div class="v56-modal-actions">
       <button onclick="watchMovie(${selectedMovie.id})">
         <i class="fa-solid fa-play"></i>
