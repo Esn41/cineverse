@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineVerse | Sonsuz Film Evreni</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">CV</div>
+      <div>
+        <h1>Cine<span>Verse</span></h1>
+        <p>Sonsuz Film Evreni</p>
+      </div>
+    </div>
+
+    <button class="side-link active" onclick="showPage('home')"><i class="fa-solid fa-house"></i> Ana Sayfa</button>
+    <button class="side-link" onclick="showPage('movies')"><i class="fa-solid fa-clapperboard"></i> Filmler</button>
+    <button class="side-link" onclick="showPage('categories')"><i class="fa-solid fa-table-cells"></i> Kategoriler</button>
+    <button class="side-link" onclick="showPage('watchlist')"><i class="fa-regular fa-bookmark"></i> Listem</button>
+    <button class="side-link" onclick="showPage('favorites')"><i class="fa-regular fa-heart"></i> Favorilerim</button>
+    <button class="side-link" onclick="showPage('about')"><i class="fa-solid fa-circle-info"></i> Hakkımızda</button>
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+
+      <nav>
+        <button onclick="showPage('home')" class="nav-btn active">Ana Sayfa</button>
+        <button onclick="showPage('movies')" class="nav-btn">Filmler</button>
+        <button onclick="showPage('categories')" class="nav-btn">Kategoriler</button>
+        <button onclick="showPage('watchlist')" class="nav-btn">Listem</button>
+      </nav>
+
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Film ara..." />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </header>
+
+    <section id="homePage" class="page active-page">
+
+      <section class="hero">
+        <button class="slide-btn left"><i class="fa-solid fa-chevron-left"></i></button>
+
+        <div class="hero-content">
+          <div class="tag">KORKU • 1922</div>
+          <h2>Nosferatu</h2>
+          <p>Kont Dracula'dan ilham alan bu sessiz korku klasiği, sinema tarihinin en etkileyici yapımlarındandır.</p>
+
+          <div class="hero-actions">
+            <button onclick="watchMovie(1)" class="primary-btn"><i class="fa-solid fa-play"></i> İzle</button>
+            <button onclick="openDetails(1)" class="dark-btn"><i class="fa-solid fa-circle-info"></i> Detaylar</button>
+            <button onclick="addToList(1)" class="round-btn"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+
+        <button class="slide-btn right"><i class="fa-solid fa-chevron-right"></i></button>
+      </section>
+
+      <div class="category-row" id="categoryButtons"></div>
+
+      <div class="section-title">
+        <h3>🔥 En Çok İzlenenler</h3>
+        <button onclick="showPage('movies')">Tümünü Gör</button>
+      </div>
+      <div id="popularGrid" class="movie-row"></div>
+
+      <div class="section-title">
+        <h3>✨ Yeni Eklenenler</h3>
+        <button onclick="showPage('movies')">Tümünü Gör</button>
+      </div>
+      <div id="newGrid" class="movie-row"></div>
+
+    </section>
+
+    <section id="moviesPage" class="page">
+      <h2 class="page-title">Tüm Filmler</h2>
+      <div id="movieGrid" class="grid"></div>
+    </section>
+
+    <section id="categoriesPage" class="page">
+      <h2 class="page-title">Kategoriler</h2>
+      <div class="category-row big" id="categoryPageButtons"></div>
+      <div id="categoryResult" class="grid"></div>
+    </section>
+
+    <section id="watchlistPage" class="page">
+      <h2 class="page-title">Listem</h2>
+      <div id="watchlistGrid" class="grid"></div>
+    </section>
+
+    <section id="favoritesPage" class="page">
+      <h2 class="page-title">Favorilerim</h2>
+      <div id="favoritesGrid" class="grid"></div>
+    </section>
+
+    <section id="watchPage" class="page">
+      <button class="back-btn" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+      <h2 id="watchTitle" class="page-title"></h2>
+      <div class="player-box">
+        <iframe id="moviePlayer" src="" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section id="aboutPage" class="page text-page">
+      <h2>Hakkımızda</h2>
+      <p>
+        CineVerse, klasikleşmiş ve yasal olarak paylaşılabilen film içeriklerini kullanıcılarla buluşturmayı amaçlayan modern bir film platformudur.
+        Amacımız sinema kültürünü yaygınlaştırmak, eski ve değerli yapımları daha erişilebilir hale getirmek ve kullanıcıya sade, kaliteli bir izleme deneyimi sunmaktır.
+      </p>
+      <p>
+        Platformda yer alan örnek içerikler kamu malı, telifsiz veya yasal kaynaklardan yönlendirilen içerikler olarak planlanmıştır.
+        CineVerse, telif hakkı sahiplerinin haklarına saygı duyar.
+      </p>
+    </section>
+
+    <section id="privacyPage" class="page text-page">
+      <h2>Gizlilik Politikası</h2>
+      <p>
+        CineVerse kullanıcı gizliliğine önem verir. Bu sitede temel kullanıcı deneyimini geliştirmek için tarayıcı üzerinde favoriler ve izleme listesi gibi bilgiler saklanabilir.
+      </p>
+      <p>
+        Bu bilgiler cihazınızın yerel depolama alanında tutulur ve üçüncü kişilerle paylaşılmaz. Site ileride üyelik, reklam veya analiz sistemleri kullanırsa bu politika güncellenebilir.
+      </p>
+    </section>
+
+    <section id="contactPage" class="page text-page">
+      <h2>İletişim</h2>
+      <p>
+        CineVerse ile ilgili öneri, destek, iş birliği veya telif hakkı bildirimleri için bizimle iletişime geçebilirsiniz.
+      </p>
+      <p><strong>E-posta:</strong> destek@cineverse.com</p>
+      <p><strong>Destek Saatleri:</strong> Hafta içi 09:00 - 18:00</p>
+    </section>
+
+    <section id="termsPage" class="page text-page">
+      <h2>Kullanım Koşulları</h2>
+      <p>
+        CineVerse'i kullanan herkes, siteyi yürürlükteki yasalara uygun şekilde kullanmayı kabul eder.
+      </p>
+      <p>
+        Platformdaki içeriklerin izinsiz kopyalanması, yeniden dağıtılması veya kötüye kullanılması yasaktır.
+        Telif hakkı ihlali olduğunu düşündüğünüz bir içerik varsa iletişim bölümünden bize bildirebilirsiniz.
+      </p>
+      <p>
+        CineVerse, içerik kaynaklarını yasal ve güvenli şekilde sunmayı amaçlar. Site içeriği zamanla güncellenebilir.
+      </p>
+    </section>
+
+    <footer>
+      <span>© 2026 CineVerse — Tüm Hakları Saklıdır.</span>
+      <button onclick="showPage('about')">Hakkımızda</button>
+      <button onclick="showPage('privacy')">Gizlilik Politikası</button>
+      <button onclick="showPage('contact')">İletişim</button>
+      <button onclick="showPage('terms')">Kullanım Koşulları</button>
+    </footer>
+
+  </main>
+</div>
+
+<div id="detailModal" class="modal">
+  <div class="modal-card">
+    <button class="close-btn" onclick="closeDetails()"><i class="fa-solid fa-xmark"></i></button>
+    <img id="detailImage" src="" />
+    <div>
+      <h2 id="detailTitle"></h2>
+      <p id="detailInfo"></p>
+      <p id="detailDesc"></p>
+      <div class="modal-actions">
+        <button onclick="watchSelected()" class="primary-btn"><i class="fa-solid fa-play"></i> İzle</button>
+        <button onclick="favoriteSelected()" class="dark-btn"><i class="fa-regular fa-heart"></i> Favori</button>
+        <button onclick="listSelected()" class="dark-btn"><i class="fa-solid fa-plus"></i> Listem</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
