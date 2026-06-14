@@ -80,11 +80,15 @@ function showMostWatched(){ showResults("En Çok İzlenenler", movies.slice().so
 function showNewMovies(){ showResults("Yeni Eklenenler", movies.filter(m=>m.isNew)); }
 function showCategories(){
   hideAll();
-  document.getElementById("homePage").classList.remove("hidden");
-  document.querySelector(".hero").style.display = "none";
-  document.querySelector(".section-title").style.display = "none";
-  document.querySelectorAll(".movie-row").forEach(row => row.style.display = "none");
-  document.getElementById("categoryBar").style.display = "flex";
+  document.getElementById("resultPage").classList.remove("hidden");
+  document.getElementById("resultTitle").innerText = "Kategoriler";
+
+  document.getElementById("resultGrid").innerHTML = categories.map(c => `
+    <button class="cat big-cat" onclick="filterMovie('${c[0]}')">
+      <i class="fa-solid ${c[1]}"></i> ${c[0]}
+    </button>
+  `).join("");
+
   window.scrollTo(0,0);
 }
 function filterMovie(cat){ showResults(cat, movies.filter(m=>m.category===cat)); }
