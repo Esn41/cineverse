@@ -634,3 +634,37 @@ body{
   font-size:17px;
   font-weight:800;
 }
+.poster-row,
+.continue-row{
+  display:flex !important;
+  gap:14px !important;
+  overflow-x:auto !important;
+  padding-bottom:16px !important;
+  min-height:290px !important;
+}
+
+.poster-row .movie-card,
+.continue-row .movie-card{
+  flex:0 0 145px !important;
+  min-width:145px !important;
+  max-width:145px !important;
+  display:block !important;
+}
+
+.poster-row .movie-card img,
+.continue-row .movie-card img{
+  width:100% !important;
+  height:210px !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+
+.result-grid .movie-card{
+  display:block !important;
+}
+
+.empty-text{
+  color:#bdbdbd;
+  font-size:18px;
+  padding:10px 0 25px;
+}
